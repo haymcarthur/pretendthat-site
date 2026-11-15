@@ -70,9 +70,10 @@ nav b{font:700 22px/1 Fredoka,sans-serif;color:var(--ink)}
 /* printables */
 .prints .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .prints h2{font-size:clamp(30px,4vw,42px);margin-bottom:14px}
-.prints .sheets{display:flex;gap:16px;justify-content:center}
-.prints .sheets img{width:48%;border-radius:12px;box-shadow:var(--shadow);background:#fff}
-.prints .sheets img:first-child{transform:rotate(-3deg)} .prints .sheets img:last-child{transform:rotate(3deg) translateY(16px)}
+.prints .sheets{display:flex;justify-content:center;padding:16px}
+.prints .sheet{position:relative;width:min(100%,420px)}
+.prints .sheet::before{content:"";position:absolute;inset:0;background:#fff;border-radius:10px;box-shadow:var(--shadow);transform:rotate(4deg)}
+.prints .sheet img{position:relative;display:block;width:100%;height:auto;aspect-ratio:771/1000;object-fit:contain;border-radius:10px;box-shadow:var(--shadow);background:#fff;transform:rotate(-1.5deg)}
 
 /* privacy */
 .privacy{padding:40px 0}
@@ -173,8 +174,7 @@ footer p{font-size:15px}
       <p>Every kit is generated for the game the kids just planned: thick-outline line art they can color, dashed cut lines, and a blank “Name: ____” line on each badge that kids fill in themselves.</p>
     </div>
     <div class="sheets">
-      <img src="assets/kit-reveal.jpg" alt="Nutmeg presenting a finished AI-drawn Bug Theater kit, ready to print" loading="lazy">
-      <img src="assets/printable-badges.jpg" alt="A printable page of AI-drawn role badges with a blank name line" loading="lazy">
+      <div class="sheet"><img src="assets/printable-badges.jpg" width="771" height="1000" alt="A real printable kit page from a Dino Vet Clinic game: six AI-drawn coloring badges of a smiling dinosaur in a doctor's coat, labeled Dinosaur Doctor, Dino Nurse and Clinic Helper, each with a blank Name line and dashed cut lines" loading="lazy"></div>
     </div>
   </div>
 </section>
