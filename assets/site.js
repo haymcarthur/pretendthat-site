@@ -19,3 +19,24 @@ if (APP_STORE_URL) {
   });
   document.querySelectorAll(".store-note").forEach((n) => n.remove());
 }
+
+// Slim step progress under the home hero: fills each step's bar as its section scrolls past.
+(() => {
+  const links = [...document.querySelectorAll(".step-progress a[data-step]")];
+  if (!links.length) return;
+  const secs = links.map((a) => document.getElementById(a.dataset.step));
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const mid = window.innerHeight * 0.5;
+    secs.forEach((sec, i) => {
+      if (!sec) return;
+      const r = sec.getBoundingClientRect();
+      const f = Math.min(1, Math.max(0, (mid - r.top) / r.height));
+      links[i].style.setProperty("--fill", (f * 100).toFixed(1) + "%");
+      links[i].classList.toggle("on", f > 0 && f < 1);
+    });
+  };
+  addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
