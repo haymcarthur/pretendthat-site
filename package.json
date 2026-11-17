@@ -1,0 +1,14 @@
+{
+  "name": "pretendthat-site",
+  "private": true,
+  "description": "pretendthat.app marketing site. Static HTML; CSS built locally with Tailwind CSS + daisyUI and committed.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/site.css -o ./assets/site.css --minify",
+    "watch:css": "tailwindcss -i ./src/site.css -o ./assets/site.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3",
+    "daisyui": "5.7.50"
+  }
+}
