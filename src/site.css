@@ -178,82 +178,69 @@
   .hero-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 64px); align-items: center; padding-block: clamp(40px, 6vw, 88px) clamp(56px, 7vw, 104px); }
   .hero-grid h1 { font-size: clamp(34px, 3.3vw, 46px); line-height: 1.1; margin-bottom: 20px; }
   @media (max-width: 1023px) { .hero-grid h1 br { display: none; } }
-  .hero-art { position: relative; margin: 0; }
+  .hero-art { position: relative; margin: 0; width: 100%; container-type: inline-size; }
   .hero-art > img { display: block; width: 100%; height: auto; }
-  .props-art { position: relative; margin: 0; }
-  .prop-card { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 18px; padding: 10px 12px; box-shadow: 0 14px 34px rgba(42, 24, 70, .12), 0 1px 3px rgba(42, 24, 70, .06); font-size: 15px; line-height: 1.2; }
-  .prop-card img { width: 48px; height: 40px; object-fit: contain; }
-  .prop-card b { display: block; color: var(--color-head); font-weight: 600; }
-  .prop-card small { display: block; color: var(--color-gray); font-size: 13px; }
-  .prop-card .ok, .prop-card .pend, .prop-card .no { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; flex: none; }
-  .prop-card .ok { background: var(--color-lime-shade); }
-  .prop-card .pend { background: #fff; border: 1.5px solid #CDE6B5; }
-  .prop-card .no { background: #fff; border: 1.5px solid #F2C4BE; color: var(--color-coral-shade); font-weight: 700; font-size: 13px; }
-  .prop-card svg { width: 15px; height: 15px; }
-  @media (max-width: 560px) { .prop-card.hide-sm { display: none; } .prop-card { font-size: 13px; padding: 8px 10px; } .prop-card img { width: 36px; height: 30px; } }
-  /* Benefit tags around the illustration (kept clear of Nutmeg's face) */
-  .benefit { position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: 8px; background: #fff; border-radius: 999px; padding: 9px 16px 9px 10px; font-size: 14px; font-weight: 500; line-height: 1.2; color: var(--color-head); white-space: nowrap; box-shadow: 0 12px 30px rgba(42, 24, 70, .10), 0 1px 3px rgba(42, 24, 70, .06); }
-  .benefit i { width: 24px; height: 24px; border-radius: 50%; background: #F1ECF7; display: grid; place-items: center; flex: none; font-style: normal; }
-  .benefit i svg { width: 13px; height: 13px; }
+  /* Benefit tags: % positions inside the illustration's box, sized in container units, so they keep the same
+     place relative to Nutmeg at every screen size (clear of her face and hands). */
+  .benefit { position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: .55em; background: #fff; border-radius: 999px; padding: .6em 1.05em .6em .65em; font-size: clamp(10px, 2.45cqw, 14px); font-weight: 500; line-height: 1.2; color: var(--color-head); white-space: nowrap; box-shadow: 0 .9em 2.2em rgba(42, 24, 70, .10), 0 1px 3px rgba(42, 24, 70, .06); }
+  .benefit i { width: 1.75em; height: 1.75em; border-radius: 50%; background: #F1ECF7; display: grid; place-items: center; flex: none; font-style: normal; }
+  .benefit i svg { width: .95em; height: .95em; }
   @media (prefers-reduced-motion: no-preference) {
     .benefit { animation: tag-float 7s ease-in-out infinite; }
     .benefit:nth-of-type(2n) { animation-delay: -3.5s; }
   }
-  @keyframes tag-float { 50% { transform: translateY(-5px); } }
+  @keyframes tag-float { 50% { transform: translateY(-4px); } }
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .benefits { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-    .benefit { position: static; animation: none !important; white-space: normal; font-size: 13.5px; }
+    .hero-art { order: -1; margin-inline: 3%; }
   }
 
-  /* ---------- device frames (Apple product bezels, composited). One wrapper so frames can change later. ---------- */
-  .device-shot { display: flex; align-items: flex-end; justify-content: center; gap: 4%; margin: 0; }
+  /* Step 2: prop cards around the pointing illustration (same container-unit sizing as the hero tags) */
+  .props-art { position: relative; margin: 0 auto; width: 100%; max-width: 520px; container-type: inline-size; }
+  .props-art > img { display: block; width: 100%; height: auto; }
+  .prop-card { position: absolute; z-index: 2; display: flex; align-items: center; gap: .65em; background: #fff; border-radius: 1.2em; padding: .65em .8em; box-shadow: 0 .9em 2.2em rgba(42, 24, 70, .12), 0 1px 3px rgba(42, 24, 70, .06); font-size: clamp(10px, 2.9cqw, 15px); line-height: 1.2; }
+  .prop-card img { width: 3.2em; height: 2.6em; object-fit: contain; }
+  .prop-card b { display: block; color: var(--color-head); font-weight: 600; }
+  .prop-card small { display: block; color: var(--color-gray); font-size: .87em; }
+  .prop-card .ok, .prop-card .pend, .prop-card .no { width: 2em; height: 2em; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .prop-card .ok { background: var(--color-lime-shade); }
+  .prop-card .pend { background: #fff; border: 1.5px solid #CDE6B5; }
+  .prop-card .no { background: #fff; border: 1.5px solid #F2C4BE; color: var(--color-coral-shade); font-weight: 700; font-size: .85em; }
+  .prop-card svg { width: 1em; height: 1em; }
+
+  /* ---------- device frames (Apple product bezels, composited). iPad behind, iPhone in front of its lower right. ---------- */
+  .device-shot { position: relative; margin: 0; padding: 0 0 7% 0; }
   .device-shot img { display: block; height: auto; filter: drop-shadow(0 22px 28px rgba(42, 24, 70, .16)); }
-  .device-shot .is-ipad { width: 70%; }
-  .device-shot .is-iphone { width: 26%; }
+  .device-shot .is-ipad { width: 88%; }
+  .device-shot .is-iphone { position: absolute; right: 0; bottom: 0; width: 25%; filter: drop-shadow(0 18px 24px rgba(42, 24, 70, .22)); }
 
-  /* ---------- printables: a fanned stack of kit pages ---------- */
+  /* ---------- printables: a fanned stack of the app's real printed pages ---------- */
   .sheets { position: relative; aspect-ratio: 1.3; max-width: 600px; margin-inline: auto; }
-  .sheet { position: absolute; left: 34%; bottom: 6%; width: 32%; aspect-ratio: 8.5 / 11; background: #fff; border-radius: 6px; padding: 3.2%; box-shadow: 0 16px 34px rgba(42, 24, 70, .14), 0 1px 3px rgba(42, 24, 70, .08); transform-origin: 50% 170%; display: grid; gap: 4%; overflow: hidden; grid-template-rows: minmax(0, 1fr); }
-  .sheet img { width: 100%; height: 100%; min-height: 0; object-fit: contain; display: block; }
-  .sheet.g3x2 { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
-  .sheet.g2x3 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
-  .sheet.g1x4 { grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(4, minmax(0, 1fr)); }
-  .sheet.g2x4 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(4, minmax(0, 1fr)); }
-  .sheet.cut > * { outline: 1px dashed #D5CFDC; outline-offset: 1px; }
+  .sheet { position: absolute; left: 32%; bottom: 6%; width: 36%; height: auto; border-radius: 4px; background: #fff; box-shadow: 0 16px 34px rgba(42, 24, 70, .14), 0 1px 3px rgba(42, 24, 70, .08); transform-origin: 50% 170%; }
+  .sheet:nth-child(1) { transform: rotate(-26deg); }
+  .sheet:nth-child(2) { transform: rotate(-16deg); }
+  .sheet:nth-child(3) { transform: rotate(-6deg); }
+  .sheet:nth-child(4) { transform: rotate(14deg); }
+  .sheet:nth-child(5) { transform: rotate(24deg); }
+  .sheet:nth-child(6) { transform: rotate(4deg); }
 
-  .sheet:nth-child(1) { transform: rotate(-30deg); }
-  .sheet:nth-child(2) { transform: rotate(-20deg); }
-  .sheet:nth-child(3) { transform: rotate(-10deg); }
-  .sheet:nth-child(4) { transform: rotate(10deg); }
-  .sheet:nth-child(5) { transform: rotate(20deg); }
-  .sheet:nth-child(6) { transform: rotate(30deg); }
-  .sheet:nth-child(7) { transform: rotate(0deg); }
-
-  /* ---------- play: a stack of scene cards (example 4-player game) ---------- */
-  .scene-stack { display: grid; max-width: 560px; margin-inline: auto; padding: 0 18% 12% 0; }
-  .scene-card { background: #fff; border: 1px solid var(--color-rule); border-radius: 22px; padding: 20px 20px 14px; box-shadow: 0 16px 34px rgba(42, 24, 70, .10), 0 1px 3px rgba(42, 24, 70, .05); transition: transform .35s ease, opacity .35s ease; }
-  .scene-card { grid-area: 1 / 1; }
-  .scene-card[data-pos="0"] { z-index: 5; transform: none; }
-  .scene-card[data-pos="1"] { z-index: 4; transform: translate(5%, 3.5%) rotate(2deg); }
-  .scene-card[data-pos="2"] { z-index: 3; transform: translate(10%, 7%) rotate(4deg); }
-  .scene-card[data-pos="3"] { z-index: 2; transform: translate(15%, 10.5%) rotate(6deg); }
-  .scene-card[data-pos="4"] { z-index: 1; transform: translate(20%, 14%) rotate(8deg); }
-  .scene-card[data-pos]:not([data-pos="0"]) > * { visibility: hidden; }
-  @media (prefers-reduced-motion: reduce) { .scene-card { transition: none; } }
+  /* ---------- play: three scene cards, offset so the two underneath peek (example 4-player game) ---------- */
+  .scene-stack { display: grid; max-width: 560px; margin-inline: auto; }
+  .scene-card { grid-area: 1 / 1; align-self: start; width: 88%; background: #fff; border: 1px solid var(--color-rule); border-radius: 22px; padding: 18px 18px 14px; box-shadow: 0 14px 30px rgba(42, 24, 70, .09), 0 1px 3px rgba(42, 24, 70, .05); }
+  .scene-card.c2 { margin: 7.6em 0 0 6%; }
+  .scene-card.c3 { margin: 15.2em 0 0 12%; }
   .scene-card .kicker { font-size: 12.5px; font-weight: 500; color: var(--color-gray); }
-  .scene-card h3 { font-size: 21px; margin: 2px 0 4px; }
-  .scene-card .say { font-size: 13.5px; color: var(--color-gray); font-style: italic; margin-bottom: 12px; }
-  .scene-card ul { list-style: none; padding: 0; display: grid; gap: 8px; }
-  .scene-card li { display: grid; grid-template-columns: 40px 1fr 20px; align-items: center; gap: 10px; border: 1.5px solid var(--role); border-radius: 14px; padding: 7px 10px 7px 7px; }
-  .scene-card li img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 50% 42%; background: #F4F1EC; }
+  .scene-card h3 { font-size: 20px; margin: 2px 0 10px; }
+  .scene-card .say { font-size: 13.5px; color: var(--color-gray); font-style: italic; margin: -4px 0 12px; }
+  .scene-card ul { list-style: none; padding: 0; display: grid; gap: 7px; }
+  .scene-card li { display: grid; grid-template-columns: 38px 1fr 22px; align-items: center; gap: 10px; background: color-mix(in srgb, var(--role) 9%, #fff); border-radius: 14px; padding: 7px 12px 7px 7px; }
+  .scene-card li img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: 50% 42%; }
   .scene-card li b { display: block; font-size: 12px; font-weight: 600; color: var(--role); line-height: 1.2; }
   .scene-card li span { font-size: 14.5px; line-height: 1.3; color: var(--color-ink); }
-  .scene-card li::after { content: ""; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--role); }
+  .scene-card .spk { width: 22px; height: 22px; color: var(--role); }
   .r1 { --role: #2F6FD6; } .r2 { --role: #D9650B; } .r3 { --role: #0E8A75; } .r4 { --role: #B8338F; }
-  .stack-nav .btn-outline-chunky { white-space: nowrap; }
-  @media (max-width: 560px) { .scene-stack { padding: 0 9% 8% 0; } }
-  .stack-nav { display: flex; align-items: center; gap: 12px; margin-top: 18px; justify-content: center; font-size: 14px; color: var(--color-gray); }
+  @media (max-width: 560px) { .scene-card { width: 92%; padding: 14px 14px 12px; } .scene-card li span { font-size: 13.5px; } .scene-card.c2 { margin-left: 4%; } .scene-card.c3 { margin-left: 8%; } }
+  .stack-note { text-align: center; margin-top: 14px; font-size: 14px; color: var(--color-gray); }
 
   /* ---------- steps ---------- */
   .step-card { display: block; text-decoration: none; background: #fff; border: 1px solid var(--color-rule); border-radius: 24px; padding: 22px; height: 100%; transition: border-color .15s ease, transform .12s ease; }

@@ -19,16 +19,3 @@ if (APP_STORE_URL) {
   });
   document.querySelectorAll(".store-note").forEach((n) => n.remove());
 }
-
-// Play section: "Next card" brings the next scene card to the front of the stack.
-document.querySelectorAll("[data-stack]").forEach((stack) => {
-  const cards = [...stack.querySelectorAll(".scene-card")];
-  const btn = stack.parentElement.querySelector("[data-stack-next]");
-  if (!btn || cards.length < 2) return;
-  btn.addEventListener("click", () => {
-    cards.forEach((c) => {
-      const p = Number(c.dataset.pos);
-      c.dataset.pos = String((p - 1 + cards.length) % cards.length);
-    });
-  });
-});
