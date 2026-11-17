@@ -87,10 +87,10 @@
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   html, body { overflow-x: clip; }
-  html:root { --root-bg: #F1EFEA; background-color: #F1EFEA; }
+  html:root { --root-bg: #FFFFFF; background-color: #FFFFFF; }
   body {
     @apply font-sans antialiased;
-    background: var(--color-page);
+    background: #fff;
     color: var(--color-ink);
     font-size: 17px;
     line-height: 1.6;
@@ -109,8 +109,8 @@
 
 @layer components {
   /* ---------- the page sits in one big soft card ---------- */
-  .shell { max-width: 1360px; margin: 20px auto; background: #fff; border-radius: 40px; box-shadow: var(--shadow-card); overflow: clip; }
-  @media (max-width: 640px) { .shell { margin: 8px; border-radius: 26px; } }
+  /* Full-width page: no frame. Sections run edge to edge; content stays in .wrap. */
+  .shell { background: #fff; }
   .wrap { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: 40px; position: relative; }
   .narrow { max-width: 820px; }
   @media (max-width: 640px) { .wrap { padding-inline: 18px; } }
