@@ -27,6 +27,15 @@ Every page's header and footer sit between `<!-- SHARED:HEADER -->` / `<!-- SHAR
 python3 -m http.server 8743   # then open http://localhost:8743/
 ```
 
+## Images
+
+- `assets/art/`: vector art (logos, app icon, the two Nutmeg illustrations, prop art). Keep it vector.
+- `assets/app/`: real demo-mode app screens composited into Apple's product bezels (iPad Pro 13" M5 Space Black
+  landscape, iPhone 18 Pro Black portrait), exported at 1x/2x (iPad) and 1x/2x/3x (iPhone), WebP q90, served with
+  `srcset`/`sizes`. Apple's raw bezel PNGs are not in this repo (license: download them from Apple).
+- `assets/kit/`: printable art from a real saved game (Vet Clinic for Sea Animals), used for the Print and Play
+  sections.
+
 ## App Store link
 
 Set `APP_STORE_URL` in `assets/site.js` when the app is live; until then the badges say "Coming soon".
