@@ -4,218 +4,265 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PretendThat</title>
-<meta name="description" content="The game master for real-world pretend play. An iPad app for kids 4–8, guided by Nutmeg the stage-manager mouse.">
+<meta name="description" content="PretendThat is an iPad app for kids 4–8. Nutmeg the stage-manager mouse helps kids plan a pretend game by talking, find props around the house, print a custom kit, and play it off the screen.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="canonical" href="https://pretendthat.app/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PretendThat: the game master for real-world pretend play">
-<meta property="og:description" content="Nutmeg, a voice-first stage-manager mouse, takes kids from “I’m bored” to a printed kit and a show they play off the screen.">
+<meta property="og:description" content="An iPad app for kids 4–8. Nutmeg helps kids plan a pretend game, find props, print a custom kit, and then steps back so the play happens off the screen.">
 <meta property="og:url" content="https://pretendthat.app/">
 <meta property="og:image" content="https://pretendthat.app/assets/conversation.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-:root{
-  --bg:#FFFBF5; --surface:#FFFFFF; --ink:#2A1A4A; --body:#4A3F5C; --muted:#7A6F8A;
-  --lav:#E3D9F3; --pink:#FFD6D0; --sky:#CDE9F5; --peach:#FFE9CF;
-  --coral:#FF7A66; --yellow:#FFC94D; --shadow:0 10px 30px rgba(42,26,74,.10);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{overflow-x:hidden}
-body{background:var(--bg);color:var(--body);font:400 17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-h1,h2,h3{font-family:Fredoka,"Baloo 2",system-ui,sans-serif;color:var(--ink);line-height:1.1}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px;position:relative}
-.blob{position:absolute;border-radius:50%;filter:blur(2px);z-index:0;pointer-events:none}
-section{position:relative;padding:88px 0;overflow:hidden}
-.eyebrow{display:inline-block;font:600 14px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
-
-/* nav */
-nav{position:relative;z-index:2}
-nav .wrap{display:flex;align-items:center;gap:12px;padding-top:20px;padding-bottom:20px}
-nav img{width:40px;height:40px;border-radius:10px;box-shadow:var(--shadow)}
-nav b{font:700 22px/1 Fredoka,sans-serif;color:var(--ink)}
-
-/* hero */
-.hero{padding:24px 0 72px;overflow:hidden}
+.hero{padding:16px 0 72px}
 .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(44px,6.4vw,76px);font-weight:700;margin-bottom:20px}
-.hero h1 em{font-style:normal;color:var(--coral);white-space:nowrap}
-.hero p.lead{font-size:clamp(18px,2vw,21px);max-width:34ch;margin-bottom:28px}
-.pill{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font:600 15px/1 Inter,sans-serif;padding:14px 22px;border-radius:999px;text-decoration:none}
-.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.tag{background:var(--surface);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;color:var(--ink);box-shadow:0 2px 8px rgba(42,26,74,.06)}
+.hero h1{font-size:clamp(42px,6.2vw,74px);font-weight:700;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--coral-ink);white-space:nowrap}
+.hero .lead{font-size:clamp(18px,2vw,21px);max-width:36ch;margin-bottom:28px}
+.hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px}
+.hero .cta a.more{font-weight:600;color:var(--ink)}
 .hero-art{position:relative;display:flex;justify-content:center}
 .hero-art .disc{position:absolute;inset:6% 4% 0;background:var(--lav);border-radius:50%}
 .hero-art img{position:relative;width:min(400px,100%);animation:bob 4s ease-in-out infinite}
+.hero .blob{position:absolute;border-radius:50%;pointer-events:none}
 @keyframes bob{50%{transform:translateY(-10px)}}
 @media (prefers-reduced-motion:reduce){.hero-art img{animation:none}}
 
-/* steps */
 .steps{background:var(--surface)}
-.head{text-align:center;max-width:640px;margin:0 auto 52px}
-.head h2{font-size:clamp(32px,4.4vw,48px);margin-bottom:12px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;position:relative;z-index:1}
-.card{border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:18px}
-.card:nth-child(1){background:var(--lav)} .card:nth-child(2){background:var(--peach)}
-.card:nth-child(3){background:var(--pink)} .card:nth-child(4){background:var(--sky)}
-.card .num{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 20px/1 Fredoka,sans-serif;flex:none}
-.card .top{display:flex;gap:14px;align-items:center}
-.card h3{font-size:30px;font-weight:600}
-.card p{max-width:46ch}
-.card img{border-radius:16px;box-shadow:var(--shadow);margin-top:auto;background:#fff}
+.step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.step{border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:16px}
+.step:nth-child(1){background:var(--lav)} .step:nth-child(2){background:var(--peach)}
+.step:nth-child(3){background:var(--pink)} .step:nth-child(4){background:var(--sky)}
+.step .top{display:flex;gap:14px;align-items:center}
+.step .num{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 20px/1 Fredoka,sans-serif;flex:none}
+.step h3{font-size:28px;font-weight:600}
+.step img{border-radius:16px;box-shadow:var(--shadow);margin-top:auto;background:#fff;aspect-ratio:1200/827;object-fit:cover;width:100%}
 
-/* printables */
-.prints .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.prints h2{font-size:clamp(30px,4vw,42px);margin-bottom:14px}
-.prints .sheets{display:flex;justify-content:center;padding:16px}
-.prints .sheet{position:relative;width:min(100%,420px)}
-.prints .sheet::before{content:"";position:absolute;inset:0;background:#fff;border-radius:10px;box-shadow:var(--shadow);transform:rotate(4deg)}
-.prints .sheet img{position:relative;display:block;width:100%;height:auto;aspect-ratio:771/1000;object-fit:contain;border-radius:10px;box-shadow:var(--shadow);background:#fff;transform:rotate(-1.5deg)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.why-grid .card .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:26px;margin-bottom:14px}
 
-/* privacy */
-.privacy{padding:40px 0}
-.privacy .box{background:var(--ink);color:#EDE6F7;border-radius:32px;padding:44px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;overflow:hidden}
-.privacy img{width:150px}
-.privacy h2{color:#fff;font-size:clamp(28px,3.6vw,40px);margin-bottom:10px}
-.privacy h2 span{color:var(--yellow)}
+.saved .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.saved h2{font-size:clamp(30px,4vw,42px);margin-bottom:14px}
+.saved ul{padding-left:20px;margin-top:14px}
+.saved li{margin-bottom:8px}
+.saved img{border-radius:22px;box-shadow:var(--shadow)}
 
-/* built */
-.built .list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
-.built .item{background:var(--surface);border-radius:22px;padding:24px;box-shadow:0 2px 12px rgba(42,26,74,.06)}
-.built .item h3{font-size:21px;font-weight:600;margin-bottom:6px}
-.built .item p{font-size:15.5px}
-.built .note{text-align:center;color:var(--muted);font-size:15px;margin-top:28px;position:relative;z-index:1}
+.safety{padding:40px 0}
+.safety .box{background:var(--ink);color:#EDE6F7;border-radius:32px;padding:44px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+.safety .box > img{width:150px}
+.safety h2{color:#fff;font-size:clamp(28px,3.6vw,40px);margin-bottom:14px}
+.safety h2 span{color:var(--yellow)}
+.safety ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-bottom:18px}
+.safety li{padding-left:28px;position:relative}
+.safety li::before{content:"✓";position:absolute;left:0;color:var(--yellow);font-weight:700}
+.safety a{color:#fff;font-weight:600}
 
-footer{background:var(--lav);padding:44px 0;text-align:center}
-footer .wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
-footer img{width:90px}
-footer b{font:700 22px/1 Fredoka,sans-serif;color:var(--ink)}
-footer p{font-size:15px}
+.closing{text-align:center;background:var(--peach)}
+.closing h2{font-size:clamp(30px,4.2vw,44px);margin-bottom:12px}
+.closing p{margin:0 auto 24px;max-width:46ch}
 
+@media (max-width:900px){
+  .why-grid{grid-template-columns:1fr 1fr}
+}
 @media (max-width:860px){
-  section{padding:64px 0}
-  .hero .wrap,.prints .wrap{grid-template-columns:1fr}
-  .hero-art{order:-1} .hero-art img{width:min(280px,80%)}
-  .grid{grid-template-columns:1fr}
-  .built .list{grid-template-columns:1fr 1fr}
-  .privacy .box{grid-template-columns:1fr;text-align:center;padding:32px 24px}
-  .privacy img{margin:0 auto;width:120px}
+  .hero .wrap,.saved .wrap{grid-template-columns:1fr}
+  .hero-art{order:-1} .hero-art img{width:min(260px,72%)}
+  .step-grid{grid-template-columns:1fr}
+  .safety .box{grid-template-columns:1fr;text-align:center;padding:32px 22px}
+  .safety .box > img{margin:0 auto;width:110px}
+  .safety ul{grid-template-columns:1fr;text-align:left}
 }
 @media (max-width:560px){
-  .wrap{padding:0 16px}
-  .built .list{grid-template-columns:1fr}
-  .card{padding:20px}
-  .card h3{font-size:26px}
-  .blob{display:none}
-  .hero{background:radial-gradient(circle at 105% 0%,var(--pink) 0 150px,transparent 151px),radial-gradient(circle at -10% 100%,var(--sky) 0 110px,transparent 111px)}
+  .why-grid{grid-template-columns:1fr}
+  .step{padding:20px}
+  .step h3{font-size:24px}
+  .hero .blob{display:none}
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<nav><div class="wrap"><img src="assets/favicon.png" alt=""><b>PretendThat</b></div></nav>
-
-<header class="hero">
-  <div class="blob" style="width:340px;height:340px;background:var(--pink);top:-120px;right:-80px;opacity:.7"></div>
-  <div class="blob" style="width:220px;height:220px;background:var(--sky);bottom:-60px;left:-60px;opacity:.8"></div>
+<header class="site-head">
   <div class="wrap">
-    <div style="position:relative;z-index:1">
-      <span class="eyebrow">iPad app · kids 4–8</span>
-      <h1>The game master for <em>real-world</em> pretend play.</h1>
-      <p class="lead">Meet Nutmeg, a voice-first stage-manager mouse. She takes kids from “I’m bored” to a printed kit and a show, then steps back so the play happens off the screen.</p>
-      <a class="pill" href="#how">See how it works ↓</a>
-      <div class="tags"><span class="tag">Talk, don’t type</span><span class="tag">Household props</span><span class="tag">Custom printables</span><span class="tag">Screen-light play</span></div>
-    </div>
-    <div class="hero-art"><div class="disc"></div><img src="assets/nutmeg-wave-happy.png" alt="Nutmeg, a mouse in a stage-manager outfit, waving hello"></div>
+    <a class="brand" href="./" aria-label="PretendThat home"><img src="assets/favicon.png" alt=""><b>PretendThat</b></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="support/">Support</a>
+      <a href="privacy/">Privacy</a>
+    </nav>
   </div>
 </header>
 
-<section class="steps" id="how">
-  <div class="blob" style="width:260px;height:260px;background:var(--peach);top:40px;left:-120px;opacity:.6"></div>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="blob" style="width:340px;height:340px;background:var(--pink);top:-140px;right:-90px;opacity:.7"></div>
+  <div class="blob" style="width:220px;height:220px;background:var(--sky);bottom:-70px;left:-70px;opacity:.8"></div>
+  <div class="wrap">
+    <div style="position:relative;z-index:1">
+      <span class="eyebrow">For iPad · Ages 4–8</span>
+      <h1 id="hero-title">The game master for <em>real-world</em> pretend play.</h1>
+      <p class="lead">Meet Nutmeg, a stage-manager mouse who helps kids turn “I’m bored” into a pretend game they plan by talking, set up with things from around the house, and play together, off the screen.</p>
+      <div class="cta" id="download">
+        <!-- App Store badge. Not a link yet: set APP_STORE_URL in assets/site.js when the app is live. -->
+        <span class="store soon js-store" role="img" aria-label="PretendThat: coming soon to the App Store">
+          <svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12.152 8.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 5.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+          <span><small>Coming soon to the</small><strong>App Store</strong></span>
+        </span>
+        <a class="more" href="#how">See how it works ↓</a>
+      </div>
+      <span class="store-note">Coming soon for iPad. Not in the App Store yet.</span>
+    </div>
+    <div class="hero-art"><div class="disc"></div><img src="assets/nutmeg-wave-happy.png" width="510" height="700" alt="Nutmeg, a cartoon mouse in a purple stage-manager vest and headset, waving hello"></div>
+  </div>
+</section>
+
+<section class="steps" id="how" aria-labelledby="how-title">
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">How it works</span>
-      <h2>Four steps from bored to playing</h2>
-      <p>Kids talk with Nutmeg. A grown-up only needs to press Print.</p>
+      <h2 id="how-title">From “I’m bored” to showtime in four steps</h2>
+      <p>Kids do the talking. A grown-up just helps with the printer.</p>
     </div>
-    <div class="grid">
-      <article class="card">
-        <div class="top"><span class="num">1</span><h3>Game</h3></div>
-        <p>Pick a game and a theme just by talking. Nutmeg offers a few ideas, asks how many kids are playing, and hands out a role to each one.</p>
-        <img src="assets/conversation.jpg" alt="Nutmeg talking on her stage while kids pick a game" loading="lazy">
+    <div class="step-grid">
+      <article class="step">
+        <div class="top"><span class="num">1</span><h3>Pick a game by talking</h3></div>
+        <p>No reading or typing needed. Kids tell Nutmeg what they want to play, like “a bakery on the moon”, and she offers ideas, asks how many kids are playing (up to 6), and gives everyone a role.</p>
+        <img src="assets/conversation.jpg" width="1200" height="827" alt="Nutmeg on her theater stage, listening while kids talk about what to play" loading="lazy">
       </article>
-      <article class="card">
-        <div class="top"><span class="num">2</span><h3>Get Ready</h3></div>
-        <p>Go on a prop hunt around the house: pillows, chairs, blankets, boxes. Only soft, safe items, and a missing prop can be swapped or skipped.</p>
-        <img src="assets/prop-hunt.jpg" alt="Prop hunt: Nutmeg points to a tray card with Found it and Don't have it buttons" loading="lazy">
+      <article class="step">
+        <div class="top"><span class="num">2</span><h3>Find props at home</h3></div>
+        <p>Nutmeg sends kids on a prop hunt, one thing at a time: a bowl becomes a mixing cauldron, a blanket becomes a stage curtain. Don’t have something? Tap ✗ and she swaps it or you pretend.</p>
+        <img src="assets/prop-hunt-card.jpg" width="1200" height="827" alt="Prop hunt: Nutmeg points to a card showing a bowl that will be a mixing cauldron, with a green check and a red X" loading="lazy">
       </article>
-      <article class="card">
-        <div class="top"><span class="num">3</span><h3>Print</h3></div>
-        <p>An AI-generated custom kit to color and cut: role badges, a sign, play money, tickets, a menu and prop cut-outs. Up to 7 pages, one print for a grown-up.</p>
-        <img src="assets/kit-reveal.jpg" alt="Printable kit pages fanned out beside Nutmeg" loading="lazy">
+      <article class="step">
+        <div class="top"><span class="num">3</span><h3>Print a custom kit</h3></div>
+        <p>A kit drawn just for this game: role badges, a sign, play money, tickets, a menu and cut-outs. Choose full color, or plain outlines for kids to color themselves, then print with AirPrint.</p>
+        <img src="assets/print-both.jpg" width="1200" height="827" alt="The Print screen: the same kit pages shown twice, a full-color set and an outline set to color, with a printer button" loading="lazy">
       </article>
-      <article class="card">
-        <div class="top"><span class="num">4</span><h3>Play</h3></div>
-        <p>Nutmeg guides the show scene by scene with picture checklists and tablet hand-offs (“Pass the tablet to the Captain!”), then steps back.</p>
-        <img src="assets/checklist.jpg" alt="Scene checklist with picture steps" loading="lazy">
+      <article class="step">
+        <div class="top"><span class="num">4</span><h3>Play while Nutmeg steps back</h3></div>
+        <p>Nutmeg guides the show scene by scene with picture checklists and “pass the iPad to the Head Baker!” hand-offs. Then she takes a nap, and the play happens off the screen.</p>
+        <img src="assets/play-checklist.jpg" width="1200" height="827" alt="A scene checklist called Open the Bakery, with picture steps for each role and one step checked off" loading="lazy">
       </article>
     </div>
   </div>
 </section>
 
-<section class="prints">
+<section class="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Why parents love it</span>
+      <h2 id="why-title">Screen time that ends in real play</h2>
+    </div>
+    <div class="why-grid">
+      <div class="card"><div class="ico" style="background:var(--lav)" aria-hidden="true">🎭</div><h3>Leads off the screen</h3><p>The iPad sets the stage, then gets out of the way. Most of the fun happens with kids moving, talking and playing together.</p></div>
+      <div class="card"><div class="ico" style="background:var(--peach)" aria-hidden="true">💡</div><h3>Their ideas, not ours</h3><p>Kids invent the game. Nutmeg builds on what they say, so every game is one they made up.</p></div>
+      <div class="card"><div class="ico" style="background:var(--sky)" aria-hidden="true">🧺</div><h3>Uses what you have</h3><p>Pillows, bowls, chairs and blankets become props. No toys to buy, and only soft, safe household things.</p></div>
+      <div class="card"><div class="ico" style="background:var(--pink)" aria-hidden="true">🧒</div><h3>Made for ages 4–8</h3><p>Voice first with big picture buttons, so kids who can’t read yet can still lead the game. Siblings and friends play together, up to 6.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="saved" style="background:var(--surface)" aria-labelledby="saved-title">
   <div class="wrap">
     <div>
-      <span class="eyebrow">Made for this game</span>
-      <h2>A kit that matches the story</h2>
-      <p>Every kit is generated for the game the kids just planned: thick-outline line art they can color, dashed cut lines, and a blank “Name: ____” line on each badge that kids fill in themselves.</p>
+      <span class="eyebrow">Saved games and replays</span>
+      <h2 id="saved-title">Love a game? Put it on the shelf.</h2>
+      <p>At the end of a game, tap the star to save it. Each saved game gets its own picture on Nutmeg’s bookshelf, ready to play again any time.</p>
+      <ul>
+        <li><strong>Play it again with a different crowd.</strong> Change the number of players (1 to 6) and the roles and scenes adjust.</li>
+        <li><strong>No waiting.</strong> The kit and the play guide are already made, so a replay starts right away. Reprint the kit in color or outline.</li>
+        <li><strong>Nutmeg’s real voice.</strong> Replays play back Nutmeg’s own recorded lines from the first time, never a robot voice.</li>
+        <li><strong>Grown-ups stay in charge.</strong> Delete saved games in the Grown-ups corner, behind a parental gate.</li>
+      </ul>
     </div>
-    <div class="sheets">
-      <div class="sheet"><img src="assets/printable-badges.jpg" width="771" height="1000" alt="A real printable kit page from a Dino Vet Clinic game: six AI-drawn coloring badges of a smiling dinosaur in a doctor's coat, labeled Dinosaur Doctor, Dino Nurse and Clinic Helper, each with a blank Name line and dashed cut lines" loading="lazy"></div>
-    </div>
+    <img src="assets/bookshelf.jpg" width="1200" height="827" alt="Nutmeg pointing at a bookshelf of saved games, each with a picture card, such as Pet Vet, Dinosaur Museum and Magic Bakery on the Moon" loading="lazy">
   </div>
 </section>
 
-<section class="privacy">
+<section class="safety" id="privacy" aria-labelledby="safety-title">
   <div class="wrap">
     <div class="box">
-      <img src="assets/nutmeg-point-talking.png" alt="" loading="lazy">
+      <img src="assets/nutmeg-point-talking.png" width="524" height="700" alt="" loading="lazy">
       <div>
-        <h2>We never ask for kids’ names. <span>Nothing is stored.</span></h2>
-        <p>No accounts, no backend, no recordings, no transcripts. Nutmeg only asks how many kids are playing. Voice audio is processed live by OpenAI under its API terms, and PretendThat keeps none of it.</p>
+        <h2 id="safety-title">Safe for kids. <span>Nothing about them is stored.</span></h2>
+        <ul>
+          <li>No accounts and no sign-in</li>
+          <li>Nutmeg never asks for kids’ names; she uses roles like “the Captain”</li>
+          <li>Kids’ voices are used live to talk, never recorded or saved by us</li>
+          <li>No ads, no tracking, no analytics</li>
+          <li>Kid-safety guardrails steer away from anything scary or unsafe</li>
+          <li>Saved games keep only the game, on your iPad</li>
+        </ul>
+        <p><a href="privacy/">Read the privacy policy</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="built">
-  <div class="blob" style="width:300px;height:300px;background:var(--sky);top:30px;right:-120px;opacity:.6"></div>
-  <div class="wrap">
+<section class="faq" aria-labelledby="faq-title">
+  <div class="wrap narrow">
     <div class="head">
-      <span class="eyebrow">How it’s built</span>
-      <h2>Native, voice-first, and tested</h2>
+      <span class="eyebrow">Questions</span>
+      <h2 id="faq-title">Good to know</h2>
     </div>
-    <div class="list">
-      <div class="item"><h3>Swift &amp; SwiftUI</h3><p>A native iPad app (iPadOS 17+) with no third-party runtime dependencies.</p></div>
-      <div class="item"><h3>Realtime voice</h3><p>OpenAI Realtime API, speech-to-speech over a WebSocket with AVAudioEngine. Tool calls drive the app’s state machine.</p></div>
-      <div class="item"><h3>Claude for the story</h3><p>Anthropic’s Claude writes each kit and the scene-by-scene play guide as structured JSON.</p></div>
-      <div class="item"><h3>AI printables</h3><p>OpenAI image generation draws every kit page and the sticker art for ideas, roles and props.</p></div>
-      <div class="item"><h3>Living character art</h3><p>Layered vector Nutmeg animated in SwiftUI, with a mouth that follows the voice’s volume.</p></div>
-      <div class="item"><h3>NutmegCore</h3><p>A Swift package holding the app’s logic, covered by about 200 unit tests.</p></div>
-    </div>
+    <details>
+      <summary>Do I need a printer?</summary>
+      <p>PretendThat is best with one: the custom kit (badges, signs, money and more) is a big part of the fun, and it prints with AirPrint. No printer? Tell Nutmeg, and she’ll guide the kids to draw or make the pieces themselves instead.</p>
+    </details>
+    <details>
+      <summary>What ages is it for?</summary>
+      <p>Kids 4 to 8. It’s voice first with picture buttons, so pre-readers can play, and older kids can take the lead. Up to 6 kids can play one game.</p>
+    </details>
+    <details>
+      <summary>What devices does it run on?</summary>
+      <p>iPad only for now (iPadOS 17 or later). It needs an internet connection to create new games and for Nutmeg’s voice.</p>
+    </details>
+    <details>
+      <summary>What gets saved?</summary>
+      <p>Only games you choose to save, and only the game itself: its title, roles, props, kit pictures, play guide, cover picture and Nutmeg’s recorded lines. Never kids’ names, voices, what they said, or how many played. Saved games stay on your iPad, and you can delete them any time in the Grown-ups corner.</p>
+    </details>
+    <details>
+      <summary>Is it safe for my kids?</summary>
+      <p>Kid-safety rules are built in at every step: Nutmeg steers away from scary, violent or unsafe ideas, never suggests things like the stove, knives or going outside alone, never asks for personal information, and tells kids to get a grown-up if someone seems hurt. What kids type, the game text the AI writes and every picture request are checked before they’re used.</p>
+    </details>
+    <details>
+      <summary>When can I get it?</summary>
+      <p>PretendThat is coming soon to the App Store for iPad. Questions in the meantime? <a href="support/">Contact support</a>.</p>
+    </details>
   </div>
 </section>
 
-<footer>
+<section class="closing" aria-labelledby="closing-title">
   <div class="wrap">
-    <img src="assets/nutmeg-celebrate-yay.png" alt="Nutmeg celebrating" loading="lazy">
+    <h2 id="closing-title">Ready for the show?</h2>
+    <p>PretendThat is coming soon to the App Store for iPad.</p>
+    <span class="store soon js-store" role="img" aria-label="PretendThat: coming soon to the App Store">
+      <svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12.152 8.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 5.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+      <span><small>Coming soon to the</small><strong>App Store</strong></span>
+    </span>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <img src="assets/nutmeg-celebrate-yay.png" width="519" height="700" alt="" loading="lazy">
     <b>PretendThat</b>
-    <p>Made by Haylee McArthur for Southern Utah Code Camp 2026.</p>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="support/">Support</a>
+      <a href="privacy/">Privacy</a>
+      <a href="mailto:support@pretendthat.app">support@pretendthat.app</a>
+    </nav>
+    <p class="made"><a href="codecamp/">Made at Southern Utah Code Camp 2026 — 1st place</a></p>
   </div>
 </footer>
-
+<script src="assets/site.js"></script>
 </body>
 </html>
