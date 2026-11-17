@@ -1,272 +1,395 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="pretendthat">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PretendThat</title>
-<meta name="description" content="PretendThat is an iPad app for kids 4–8. Nutmeg the stage-manager mouse helps kids plan a pretend game by talking, find props around the house, print a custom kit, and play it off the screen.">
+<meta name="description" content="PretendThat is an app for kids 4–8. Nutmeg the stage-manager mouse helps kids plan a pretend game by talking, find props around the house, print a custom kit, and play it off the screen.">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="canonical" href="https://pretendthat.app/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PretendThat: turn your living room into a pretend-play adventure">
-<meta property="og:description" content="An iPad app for kids 4–8. Nutmeg helps kids plan a pretend game, find props, print a custom kit, and then steps back so the play happens off the screen.">
+<meta property="og:description" content="An app for kids 4–8. Nutmeg helps kids plan a pretend game, find props, print a custom kit, and then steps back so the play happens off the screen.">
 <meta property="og:url" content="https://pretendthat.app/">
 <meta property="og:image" content="https://pretendthat.app/assets/conversation.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
-<style>
-.hero{padding:16px 0 72px}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(42px,6.2vw,74px);font-weight:700;margin-bottom:20px}
-.hero h1 em{font-style:normal;color:var(--coral-ink);white-space:nowrap}
-.hero .lead{font-size:clamp(18px,2vw,21px);max-width:36ch;margin-bottom:28px}
-.hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px}
-.hero .cta a.more{font-weight:600;color:var(--ink)}
-.hero-art{position:relative;display:flex;justify-content:center}
-.hero-art .disc{position:absolute;inset:6% 4% 0;background:var(--lav);border-radius:50%}
-.hero-art img{position:relative;width:min(400px,100%);animation:bob 4s ease-in-out infinite}
-.hero .blob{position:absolute;border-radius:50%;pointer-events:none}
-@keyframes bob{50%{transform:translateY(-10px)}}
-@media (prefers-reduced-motion:reduce){.hero-art img{animation:none}}
-
-.steps{background:var(--surface)}
-.step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.step{border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:16px}
-.step:nth-child(1){background:var(--lav)} .step:nth-child(2){background:var(--peach)}
-.step:nth-child(3){background:var(--pink)} .step:nth-child(4){background:var(--sky)}
-.step .top{display:flex;gap:14px;align-items:center}
-.step .num{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 20px/1 Fredoka,sans-serif;flex:none}
-.step h3{font-size:28px;font-weight:600}
-.step img{border-radius:16px;box-shadow:var(--shadow);margin-top:auto;background:#fff;aspect-ratio:1200/827;object-fit:cover;width:100%}
-
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.why-grid .card .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:26px;margin-bottom:14px}
-
-.saved .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
-.saved h2{font-size:clamp(30px,4vw,42px);margin-bottom:14px}
-.saved ul{padding-left:20px;margin-top:14px}
-.saved li{margin-bottom:8px}
-.saved img{border-radius:22px;box-shadow:var(--shadow)}
-
-.safety{padding:40px 0}
-.safety .box{background:var(--ink);color:#EDE6F7;border-radius:32px;padding:44px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
-.safety .box > img{width:150px}
-.safety h2{color:#fff;font-size:clamp(28px,3.6vw,40px);margin-bottom:14px}
-.safety h2 span{color:var(--yellow)}
-.safety ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-bottom:18px}
-.safety li{padding-left:28px;position:relative}
-.safety li::before{content:"✓";position:absolute;left:0;color:var(--yellow);font-weight:700}
-.safety a{color:#fff;font-weight:600}
-
-.closing{text-align:center;background:var(--peach)}
-.closing h2{font-size:clamp(30px,4.2vw,44px);margin-bottom:12px}
-.closing p{margin:0 auto 24px;max-width:46ch}
-
-@media (max-width:900px){
-  .why-grid{grid-template-columns:1fr 1fr}
-}
-@media (max-width:860px){
-  .hero .wrap,.saved .wrap{grid-template-columns:1fr}
-  .hero-art{order:-1} .hero-art img{width:min(260px,72%)}
-  .step-grid{grid-template-columns:1fr}
-  .safety .box{grid-template-columns:1fr;text-align:center;padding:32px 22px}
-  .safety .box > img{margin:0 auto;width:110px}
-  .safety ul{grid-template-columns:1fr;text-align:left}
-}
-@media (max-width:560px){
-  .why-grid{grid-template-columns:1fr}
-  .step{padding:20px}
-  .step h3{font-size:24px}
-  .hero .blob{display:none}
-}
-</style>
 </head>
 <body>
+<!-- SHARED:HEADER (generated by scripts/shared.py) -->
 <a class="skip" href="#main">Skip to content</a>
-
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="./" aria-label="PretendThat home"><img src="assets/favicon.png" alt=""><b>PretendThat</b></a>
+    <!-- LOGO: letters-only placeholder. Swap for the Nutmeg-on-top logo when it is exported. -->
+    <a class="brand" href="./" aria-label="PretendThat home"><img src="assets/art/logo-pretendthat.svg" width="1484" height="633" alt="PretendThat"></a>
     <nav class="site-nav" aria-label="Main">
       <a href="#how">How it works</a>
       <a href="pricing/">Pricing</a>
       <a href="support/">Support</a>
       <a href="privacy/">Privacy</a>
     </nav>
+    <a class="btn-chunky small head-cta" href="#download">Get the app</a>
+    <details class="menu-toggle">
+      <summary aria-label="Open menu">Menu <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></summary>
+      <nav class="menu-panel" aria-label="Main (mobile)">
+        <a href="#how">How it works</a>
+        <a href="pricing/">Pricing</a>
+        <a href="support/">Support</a>
+        <a href="privacy/">Privacy</a>
+        <a href="#download">Get the app</a>
+      </nav>
+    </details>
   </div>
 </header>
+<!-- /SHARED:HEADER -->
 
 <main id="main">
-<section class="hero" aria-labelledby="hero-title">
-  <div class="blob" style="width:340px;height:340px;background:var(--pink);top:-140px;right:-90px;opacity:.7"></div>
-  <div class="blob" style="width:220px;height:220px;background:var(--sky);bottom:-70px;left:-70px;opacity:.8"></div>
-  <div class="wrap">
-    <div style="position:relative;z-index:1">
-      <span class="eyebrow">For iPad · Ages 4–8</span>
-      <h1 id="hero-title">Turn your living room into a <em>pretend-play</em> adventure.</h1>
-      <p class="lead">Meet Nutmeg, your pretend-play stage manager. She helps kids dream up a pretend game they plan by talking, set up with things from around the house, and play together, off the screen.</p>
-      <div class="cta" id="download">
-        <!-- App Store badge. Not a link yet: set APP_STORE_URL in assets/site.js when the app is live. -->
-        <span class="store soon js-store" role="img" aria-label="PretendThat: coming soon to the App Store">
-          <svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12.152 8.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 5.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-          <span><small>Coming soon to the</small><strong>App Store</strong></span>
-        </span>
-        <a class="more" href="#how">See how it works ↓</a>
-        <a class="more" href="pricing/">See pricing</a>
-      </div>
-      <span class="store-note">Coming soon for iPad. Not in the App Store yet.</span>
+
+<!-- ============ 1. HERO: the app on devices, on Nutmeg's stage ============ -->
+<section class="stage-hero" aria-labelledby="hero-title">
+  <div class="valance" aria-hidden="true"></div>
+  <img class="curtain left" src="assets/art/stage-curtain-left.svg" width="238" height="448" alt="">
+  <img class="curtain right" src="assets/art/stage-curtain-right.svg" width="233" height="449" alt="">
+  <div class="floor" aria-hidden="true"></div>
+
+  <div class="wrap relative z-[4] pt-[clamp(48px,6vw,80px)] text-center">
+    <!-- Nutmeg-on-top logo (transparent). Keep it on light-to-mid backgrounds (the purple "that" needs them). -->
+    <div class="logo-sign"><img src="assets/art/logo-nutmeg-top-460.webp" srcset="assets/art/logo-nutmeg-top-460.webp 1x, assets/art/logo-nutmeg-top-920.webp 2x" width="460" height="321" alt="PretendThat"></div>
+    <span class="eyebrow !text-ink bg-white/80 rounded-full px-4 py-2">For iPad and iPhone · Ages 4–8</span>
+    <h1 id="hero-title" class="mx-auto max-w-[17ch] text-[clamp(40px,6.4vw,78px)] mt-2 mb-5">
+      Turn your living room into a <span class="accent-word">pretend-play</span> adventure.
+    </h1>
+    <p class="lead mx-auto max-w-[44ch] mb-8">Meet Nutmeg, your pretend-play stage manager. She helps kids dream up a pretend game they plan by talking, set up with things from around the house, and play together, off the screen.</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-6" id="download">
+      <!-- App Store badge. Not a link yet: set APP_STORE_URL in assets/site.js when the app is live. -->
+      <span class="store soon js-store" role="img" aria-label="PretendThat: coming soon to the App Store">
+        <svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12.152 8.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 5.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+        <span><small>Coming soon to the</small><strong>App Store</strong></span>
+      </span>
+      <a class="btn-chunky" href="#how">See how it works</a>
+      <a class="btn-outline-chunky" href="pricing/">See pricing</a>
     </div>
-    <div class="hero-art"><div class="disc"></div><img src="assets/nutmeg-wave-happy.png" width="510" height="700" alt="Nutmeg, a cartoon mouse in a purple stage-manager vest and headset, waving hello"></div>
+    <span class="store-note">Coming soon. Not in the App Store yet.</span>
+  </div>
+
+  <div class="wrap relative z-[1] mt-[clamp(36px,5vw,64px)]">
+    <div class="hero-devices">
+      <img class="sparkle" src="assets/art/stage-sparkle.svg" alt="" style="left:-2%;top:6%">
+      <img class="sparkle" src="assets/art/stage-star.svg" alt="" style="right:4%;top:-4%">
+      <figure class="ipad">
+        <img src="assets/app/ipad-scene-checklist.webp" width="1600" height="1200" alt="PretendThat on iPad: Nutmeg the mouse on her stage beside a scene checklist called Get the Bakery Ready, with a picture step for each role">
+      </figure>
+      <figure class="iphone">
+        <img src="assets/app/iphone-start.webp" width="598" height="1300" alt="The PretendThat start screen on iPhone: the logo, Nutmeg in her toy chest, and a big New game button">
+      </figure>
+      <img class="toy t1" src="assets/art/toy-duck.svg" alt="" style="left:-4%;bottom:6%">
+      <img class="toy t2" src="assets/art/toy-ball.svg" alt="" style="left:8%;bottom:-1%">
+      <img class="toy t3" src="assets/art/toy-crown.svg" alt="" style="right:26%;bottom:0">
+    </div>
   </div>
 </section>
 
-<section class="steps" id="how" aria-labelledby="how-title">
+<!-- ============ 2. HOW IT WORKS: the four steps (the app's step rail: Pick · Props · Print · Play) ============ -->
+<section id="how" class="py-[clamp(64px,8vw,104px)]" aria-labelledby="how-title">
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">How it works</span>
       <h2 id="how-title">From idea to showtime in four steps</h2>
-      <p>Kids do the talking. A grown-up just helps with the printer.</p>
+      <p class="lead">Kids do the talking. A grown-up just helps with the printer.</p>
     </div>
-    <div class="step-grid">
-      <article class="step">
-        <div class="top"><span class="num">1</span><h3>Pick a game by talking</h3></div>
-        <p>No reading or typing needed. Kids tell Nutmeg what they want to play, like “a bakery on the moon”, and she offers ideas, asks how many kids are playing (up to 6), and gives everyone a role.</p>
-        <img src="assets/conversation.jpg" width="1200" height="827" alt="Nutmeg on her theater stage, listening while kids talk about what to play" loading="lazy">
-      </article>
-      <article class="step">
-        <div class="top"><span class="num">2</span><h3>Find props at home</h3></div>
-        <p>Nutmeg sends kids on a prop hunt, one thing at a time: a bowl becomes a mixing cauldron, a blanket becomes a stage curtain. Don’t have something? Tap ✗ and she swaps it or you pretend.</p>
-        <img src="assets/prop-hunt-card.jpg" width="1200" height="827" alt="Prop hunt: Nutmeg points to a card showing a bowl that will be a mixing cauldron, with a green check and a red X" loading="lazy">
-      </article>
-      <article class="step">
-        <div class="top"><span class="num">3</span><h3>Print a custom kit</h3></div>
-        <p>A kit drawn just for this game: role badges, a sign, play money, tickets, a menu and cut-outs. Choose full color, or plain outlines for kids to color themselves, then print with AirPrint.</p>
-        <img src="assets/print-both.jpg" width="1200" height="827" alt="The Print screen: the same kit pages shown twice, a full-color set and an outline set to color, with a printer button" loading="lazy">
-      </article>
-      <article class="step">
-        <div class="top"><span class="num">4</span><h3>Play while Nutmeg steps back</h3></div>
-        <p>Nutmeg guides the show scene by scene with picture checklists and “pass the iPad to the Head Baker!” hand-offs. Then she takes a nap, and the play happens off the screen.</p>
-        <img src="assets/play-checklist.jpg" width="1200" height="827" alt="A scene checklist called Open the Bakery, with picture steps for each role and one step checked off" loading="lazy">
-      </article>
+    <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <li><a class="step-pill" href="#pick"><span class="num bg-coral-strong">1</span><span><b class="block text-lg">Pick</b><span class="muted text-[15px]">a game by talking</span></span><img src="assets/art/toy-rocket.svg" alt=""></a></li>
+      <li><a class="step-pill" href="#props"><span class="num bg-[#2F6FD6]">2</span><span><b class="block text-lg">Props</b><span class="muted text-[15px]">found at home</span></span><img src="assets/art/prop-bowl.svg" alt=""></a></li>
+      <li><a class="step-pill" href="#print"><span class="num bg-purple">3</span><span><b class="block text-lg">Print</b><span class="muted text-[15px]">a custom kit</span></span><img src="assets/art/prop-crayons.svg" alt=""></a></li>
+      <li><a class="step-pill" href="#play"><span class="num bg-[#0E8A75]">4</span><span><b class="block text-lg">Play</b><span class="muted text-[15px]">off the screen</span></span><img src="assets/art/toy-star.svg" alt=""></a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 3. CHAPTER BANDS ============ -->
+<!-- Chapter 1: Pick -->
+<section id="pick" class="band bg-cream" aria-labelledby="pick-title">
+  <div class="wrap band-grid">
+    <div>
+      <span class="chapter-tag"><b class="bg-coral-strong">1</b>Pick</span>
+      <h2 id="pick-title">Pick a game by talking</h2>
+      <p>No reading or typing needed. Kids tell Nutmeg what they want to play, like “a bakery on the moon”, and she offers ideas, asks how many kids are playing (up to 6), and gives everyone a role.</p>
+      <ul class="ticks">
+        <li>Voice first with big picture buttons, so kids who can’t read yet can still lead the game</li>
+        <li>Nutmeg never asks for names. She uses roles like “the Captain”</li>
+      </ul>
+    </div>
+    <div class="relative flex justify-center">
+      <img class="band-art" src="assets/art/toy-rocket.svg" alt="" style="width:86px;left:6%;top:12%">
+      <img class="band-art" src="assets/art/toy-duck.svg" alt="" style="width:92px;right:8%;bottom:6%">
+      <figure class="iphone w-[52%] max-w-[300px]"><img src="assets/app/iphone-talk.webp" width="598" height="1300" alt="Nutmeg on her stage on iPhone, listening, with the microphone button below" loading="lazy"></figure>
     </div>
   </div>
 </section>
 
-<section class="why" aria-labelledby="why-title">
+<!-- Chapter 2: Props -->
+<section id="props" class="band bg-sky" aria-labelledby="props-title">
+  <img class="band-art" src="assets/art/prop-pillow.svg" alt="" style="width:110px;right:4%;top:10%">
+  <div class="wrap band-grid flip">
+    <div>
+      <span class="chapter-tag"><b class="bg-[#2F6FD6]">2</b>Props</span>
+      <h2 id="props-title">Find props at home</h2>
+      <p>Nutmeg sends kids on a prop hunt, one thing at a time: a bowl becomes a mixing cauldron, a blanket becomes a stage curtain. Don’t have something? Tap ✗ and she swaps it or you pretend.</p>
+      <ul class="ticks">
+        <li>Pillows, bowls, chairs and blankets. No toys to buy</li>
+        <li>Only soft, safe household things</li>
+      </ul>
+    </div>
+    <div class="device-pair">
+      <figure class="ipad"><img src="assets/app/ipad-prop-hunt.webp" width="1600" height="1200" alt="Prop hunt on iPad: Nutmeg points to a card showing a bowl, the mixing bowl, with a green check and a red X" loading="lazy"></figure>
+      <figure class="iphone"><img src="assets/app/iphone-prop-hunt.webp" width="598" height="1300" alt="Prop hunt on iPhone: a card for a tray, the snack cart, under Nutmeg" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Chapter 3: Print -->
+<section id="print" class="band bg-lavender" aria-labelledby="print-title">
+  <img class="band-art" src="assets/art/prop-crayons.svg" alt="" style="width:90px;left:3%;bottom:8%">
+  <div class="wrap band-grid">
+    <div>
+      <span class="chapter-tag"><b class="bg-purple">3</b>Print</span>
+      <h2 id="print-title">Print a custom kit</h2>
+      <p>A kit drawn just for this game: role badges, a sign, play money, tickets, a menu and cut-outs. Choose full color, or plain outlines for kids to color themselves, then print with AirPrint.</p>
+      <ul class="ticks">
+        <li>Each badge has a blank “Name: ____” line kids fill in themselves</li>
+        <li>Nutmeg is an AI helper. The kit is drawn by AI for each new game, and grown-ups decide what gets printed</li>
+      </ul>
+    </div>
+    <div class="device-pair">
+      <figure class="ipad"><img src="assets/app/ipad-print-kit.webp" width="1600" height="1200" alt="The Print screen on iPad: Nutmeg beside the kit pages, shown in full color and as outlines to color, with a printer button" loading="lazy"></figure>
+      <figure class="paper"><img src="assets/app/printable-badges.webp" width="771" height="1000" alt="A real printed kit page: six coloring badges of a smiling dinosaur doctor, each with a blank Name line and dashed cut lines" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Chapter 4: Play -->
+<section id="play" class="band bg-lime-tint" aria-labelledby="play-title">
+  <img class="band-art" src="assets/art/toy-block.svg" alt="" style="width:84px;right:3%;bottom:10%">
+  <div class="wrap band-grid flip">
+    <div>
+      <span class="chapter-tag"><b class="bg-[#0E8A75]">4</b>Play</span>
+      <h2 id="play-title">Play while Nutmeg steps back</h2>
+      <p>Nutmeg guides the show scene by scene with picture checklists and “pass the iPad to the Head Baker!” hand-offs. Then she takes a nap, and the play happens off the screen.</p>
+    </div>
+    <div class="device-pair">
+      <figure class="ipad"><img src="assets/app/ipad-scene-space.webp" width="1600" height="1200" alt="A scene checklist on iPad called Station Opening Day, with a picture step and a Next scene button" loading="lazy"></figure>
+      <figure class="iphone"><img src="assets/app/iphone-scene-checklist.webp" width="598" height="1300" alt="A scene checklist on iPhone called Get the Plane Ready, with five picture steps" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Saved games and replays -->
+<section class="band bg-base-100" aria-labelledby="saved-title">
+  <div class="wrap band-grid">
+    <div>
+      <span class="eyebrow">Saved games and replays</span>
+      <h2 id="saved-title">Love a game? Play it again.</h2>
+      <!-- COMING SOON: auto-save is being built (decision 2026-11-17-autosave-and-count-at-kit).
+           Until it ships, the app saves with the star at the end of a game. Swap the next line for the
+           commented one below if the site goes live before auto-save does. -->
+      <p>Every new game saves itself to Nutmeg’s bookshelf with its own picture, ready to replay free, any time.</p>
+      <!-- <p>At the end of a game, tap the star to save it. Each saved game gets its own picture on Nutmeg’s bookshelf, ready to play again any time.</p> -->
+      <ul class="ticks">
+        <li><b>Play it again with a different crowd.</b> Change the number of players (1 to 6) and the roles and scenes adjust.</li>
+        <li><b>No waiting.</b> The kit and the play guide are already made, so a replay starts right away.</li>
+        <li><b>Nutmeg’s real voice.</b> Replays play back her own recorded lines from the first time.</li>
+        <li><b>Grown-ups stay in charge.</b> Delete saved games in the Grown-ups corner, behind a parental gate.</li>
+      </ul>
+    </div>
+    <div class="device-pair">
+      <figure class="ipad"><img src="assets/app/ipad-bookshelf.webp" width="1200" height="827" alt="Nutmeg’s bookshelf of saved games, each with a picture card, such as Pet Vet, Dinosaur Museum and Magic Bakery on the Moon" loading="lazy" style="aspect-ratio:1200/827"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. FEATURE CARDS (3-up) ============ -->
+<section class="py-[clamp(64px,8vw,104px)] bg-base-200" aria-labelledby="why-title">
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Why parents love it</span>
       <h2 id="why-title">Screen time that ends in real play</h2>
     </div>
-    <div class="why-grid">
-      <div class="card"><div class="ico" style="background:var(--lav)" aria-hidden="true">🎭</div><h3>Leads off the screen</h3><p>The iPad sets the stage, then gets out of the way. Most of the fun happens with kids moving, talking and playing together.</p></div>
-      <div class="card"><div class="ico" style="background:var(--peach)" aria-hidden="true">💡</div><h3>Their ideas, not ours</h3><p>Kids invent the game. Nutmeg builds on what they say, so every game is one they made up.</p></div>
-      <div class="card"><div class="ico" style="background:var(--sky)" aria-hidden="true">🧺</div><h3>Uses what you have</h3><p>Pillows, bowls, chairs and blankets become props. No toys to buy, and only soft, safe household things.</p></div>
-      <div class="card"><div class="ico" style="background:var(--pink)" aria-hidden="true">🧒</div><h3>Made for ages 4–8</h3><p>Voice first with big picture buttons, so kids who can’t read yet can still lead the game. Siblings and friends play together, up to 6.</p></div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <article class="feature">
+        <div class="ico bg-lavender"><img src="assets/art/stage-star.svg" alt=""></div>
+        <h3>Leads off the screen</h3>
+        <p>The app sets the stage, then gets out of the way. Most of the fun happens with kids moving, talking and playing together.</p>
+      </article>
+      <article class="feature">
+        <div class="ico bg-cream"><img src="assets/art/toy-rocket.svg" alt=""></div>
+        <h3>Their ideas, not ours</h3>
+        <p>Kids invent the game. Nutmeg builds on what they say, so every game is one they made up.</p>
+      </article>
+      <article class="feature">
+        <div class="ico bg-sky"><img src="assets/art/prop-blanket.svg" alt=""></div>
+        <h3>Uses what you have</h3>
+        <p>Pillows, bowls, chairs and blankets become props. No toys to buy, and only soft, safe household things.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="saved" style="background:var(--surface)" aria-labelledby="saved-title">
+<!-- ============ 5. SAFETY / PRIVACY ============ -->
+<section id="privacy" class="py-[clamp(56px,7vw,96px)]" aria-labelledby="safety-title">
   <div class="wrap">
-    <div>
-      <span class="eyebrow">Saved games and replays</span>
-      <h2 id="saved-title">Love a game? Put it on the shelf.</h2>
-      <p>At the end of a game, tap the star to save it. Each saved game gets its own picture on Nutmeg’s bookshelf, ready to play again any time.</p>
-      <ul>
-        <li><strong>Play it again with a different crowd.</strong> Change the number of players (1 to 6) and the roles and scenes adjust.</li>
-        <li><strong>No waiting.</strong> The kit and the play guide are already made, so a replay starts right away. Reprint the kit in color or outline.</li>
-        <li><strong>Nutmeg’s real voice.</strong> Replays play back Nutmeg’s own recorded lines from the first time, never a robot voice.</li>
-        <li><strong>Grown-ups stay in charge.</strong> Delete saved games in the Grown-ups corner, behind a parental gate.</li>
+    <div class="rounded-[36px] bg-purple text-white px-[clamp(22px,5vw,64px)] py-[clamp(32px,5vw,60px)] grid gap-8 lg:grid-cols-[1fr_1.2fr] items-center">
+      <div>
+        <h2 id="safety-title" class="!text-white text-[clamp(30px,4vw,46px)]">Safe for kids. <span class="text-yellow">Nothing about them is stored.</span></h2>
+        <p class="mt-4 text-[#F4EEFB]">Nutmeg is an AI helper, and grown-ups are in charge: purchases and saved-game deletes sit behind a grown-up gate.</p>
+        <a class="btn-outline-chunky on-dark mt-7" href="privacy/">Read the privacy policy</a>
+      </div>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        <li class="rounded-2xl bg-white/10 p-4">No accounts and no sign-in</li>
+        <li class="rounded-2xl bg-white/10 p-4">Nutmeg never asks for kids’ names; she uses roles like “the Captain”</li>
+        <li class="rounded-2xl bg-white/10 p-4">Kids’ voices turn into words on the device and are never sent or saved</li>
+        <li class="rounded-2xl bg-white/10 p-4">No ads, no tracking, no analytics</li>
+        <li class="rounded-2xl bg-white/10 p-4">Kid-safety guardrails steer away from anything scary or unsafe</li>
+        <li class="rounded-2xl bg-white/10 p-4">Saved games keep only the game, on your device</li>
       </ul>
     </div>
-    <img src="assets/bookshelf.jpg" width="1200" height="827" alt="Nutmeg pointing at a bookshelf of saved games, each with a picture card, such as Pet Vet, Dinosaur Museum and Magic Bakery on the Moon" loading="lazy">
   </div>
 </section>
 
-<section class="safety" id="privacy" aria-labelledby="safety-title">
+<!-- ============ 6. PRICING TEASER (matches the app's StoreKit products) ============ -->
+<section class="py-[clamp(56px,7vw,96px)] bg-sky" aria-labelledby="price-title">
   <div class="wrap">
-    <div class="box">
-      <img src="assets/nutmeg-point-talking.png" width="524" height="700" alt="" loading="lazy">
-      <div>
-        <h2 id="safety-title">Safe for kids. <span>Nothing about them is stored.</span></h2>
-        <ul>
-          <li>No accounts and no sign-in</li>
-          <li>Nutmeg never asks for kids’ names; she uses roles like “the Captain”</li>
-          <li>Kids’ voices turn into words on the iPad and are never sent or saved</li>
-          <li>No ads, no tracking, no analytics</li>
-          <li>Kid-safety guardrails steer away from anything scary or unsafe</li>
-          <li>Saved games keep only the game, on your iPad</li>
-        </ul>
-        <p><a href="privacy/">Read the privacy policy</a></p>
-      </div>
+    <div class="head">
+      <span class="eyebrow">Pricing</span>
+      <h2 id="price-title">Start free. Replays are always free.</h2>
+      <p class="lead">For less than a craft box, you get a whole month of pretend play.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3 items-stretch">
+      <article class="plan-mini">
+        <h3>Free Preview</h3>
+        <div class="price">$0</div>
+        <p>2 new shows. No card needed.</p>
+      </article>
+      <article class="plan-mini pick">
+        <span class="flag">Our pick</span>
+        <h3>Show Pass</h3>
+        <div class="price">$14.99 <small>/ month</small></div>
+        <p>10 new shows a month. New subscribers pay $9.99/month for the first 12 months. Or $149.99 a year.</p>
+      </article>
+      <article class="plan-mini">
+        <h3>Season Pass</h3>
+        <div class="price">$29.99 <small>/ month</small></div>
+        <p>Up to 30 new shows a month. New subscribers pay $19.99/month for the first 12 months. Or $299.99 a year.</p>
+      </article>
+    </div>
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-5 text-center">
+      <a class="btn-chunky purple" href="pricing/">Compare plans</a>
+      <span class="muted text-[15px]">Planned pricing, subject to change before launch.</span>
     </div>
   </div>
 </section>
 
-<section class="faq" aria-labelledby="faq-title">
+<!-- ============ 7. FAQ ============ -->
+<section id="faq" class="py-[clamp(56px,7vw,96px)]" aria-labelledby="faq-title">
   <div class="wrap narrow">
     <div class="head">
       <span class="eyebrow">Questions</span>
       <h2 id="faq-title">Good to know</h2>
     </div>
-    <details>
-      <summary>Do I need a printer?</summary>
-      <p>PretendThat is best with one: the custom kit (badges, signs, money and more) is a big part of the fun, and it prints with AirPrint. No printer? Tell Nutmeg, and she’ll guide the kids to draw or make the pieces themselves instead.</p>
+    <details class="collapse collapse-arrow faq-item" name="faq" open>
+      <summary class="collapse-title">Do I need a printer?</summary>
+      <div class="collapse-content"><p>PretendThat is best with one: the custom kit (badges, signs, money and more) is a big part of the fun, and it prints with AirPrint.</p></div>
     </details>
-    <details>
-      <summary>What ages is it for?</summary>
-      <p>Kids 4 to 8. It’s voice first with picture buttons, so pre-readers can play, and older kids can take the lead. Up to 6 kids can play one game.</p>
+    <details class="collapse collapse-arrow faq-item" name="faq">
+      <summary class="collapse-title">What ages is it for?</summary>
+      <div class="collapse-content"><p>Kids 4 to 8. It’s voice first with picture buttons, so pre-readers can play, and older kids can take the lead. Up to 6 kids can play one game.</p></div>
     </details>
-    <details>
-      <summary>What devices does it run on?</summary>
-      <p>iPad only for now (iPadOS 17 or later). It needs an internet connection to create new games and for Nutmeg’s voice.</p>
+    <details class="collapse collapse-arrow faq-item" name="faq">
+      <summary class="collapse-title">What devices does it run on?</summary>
+      <div class="collapse-content"><p>iPad and iPhone (iPadOS or iOS 17 or later). It needs an internet connection to create new games and for Nutmeg’s voice.</p></div>
     </details>
-    <details>
-      <summary>What gets saved?</summary>
-      <p>Only games you choose to save, and only the game itself: its title, roles, props, kit pictures, play guide, cover picture and Nutmeg’s recorded lines. Never kids’ names, voices, what they said, or how many played. Saved games stay on your iPad, and you can delete them any time in the Grown-ups corner.</p>
+    <details class="collapse collapse-arrow faq-item" name="faq">
+      <summary class="collapse-title">What gets saved?</summary>
+      <div class="collapse-content"><p>Only the game itself: its title, roles, props, kit pictures, play guide, cover picture and Nutmeg’s recorded lines. Never kids’ names, voices, what they said, or how many played. Saved games stay on your device, and you can delete them any time in the Grown-ups corner.</p></div>
     </details>
-    <details>
-      <summary>Is it safe for my kids?</summary>
-      <p>Kid-safety rules are built in at every step: Nutmeg steers away from scary, violent or unsafe ideas, never suggests things like the stove, knives or going outside alone, never asks for personal information, and tells kids to get a grown-up if someone seems hurt. What kids type, the game text the AI writes and every picture request are checked before they’re used.</p>
+    <details class="collapse collapse-arrow faq-item" name="faq">
+      <summary class="collapse-title">Is it safe for my kids?</summary>
+      <div class="collapse-content"><p>Kid-safety rules are built in at every step: Nutmeg steers away from scary, violent or unsafe ideas, never suggests things like the stove, knives or going outside alone, never asks for personal information, and tells kids to get a grown-up if someone seems hurt. What kids type, the game text the AI writes and every picture request are checked before they’re used.</p></div>
     </details>
-    <details>
-      <summary>When can I get it?</summary>
-      <p>PretendThat is coming soon to the App Store for iPad; see the <a href="pricing/">planned pricing</a>. Questions in the meantime? <a href="support/">Contact support</a>.</p>
+    <details class="collapse collapse-arrow faq-item" name="faq">
+      <summary class="collapse-title">When can I get it?</summary>
+      <div class="collapse-content"><p>PretendThat is coming soon to the App Store; see the <a href="pricing/">planned pricing</a>. Questions in the meantime? <a href="support/">Contact support</a>.</p></div>
     </details>
   </div>
 </section>
 
+<!-- ============ 8. CLOSING CTA ============ -->
 <section class="closing" aria-labelledby="closing-title">
-  <div class="wrap">
+  <div class="valance" aria-hidden="true"></div>
+  <img class="curtain left" src="assets/art/stage-curtain-left.svg" width="238" height="448" alt="">
+  <img class="curtain right" src="assets/art/stage-curtain-right.svg" width="233" height="449" alt="">
+  <div class="spot" aria-hidden="true"></div>
+  <div class="wrap text-center pt-[clamp(80px,10vw,128px)] pb-[clamp(56px,7vw,88px)] px-[clamp(56px,10vw,170px)]">
+    <!-- The one standalone Nutmeg on the page (besides the logo). -->
+    <img src="assets/nutmeg-celebrate-yay.png" width="519" height="700" alt="" class="mx-auto w-[clamp(96px,11vw,130px)] mb-4" loading="lazy">
     <h2 id="closing-title">Ready for the show?</h2>
-    <p>PretendThat is coming soon to the App Store for iPad. Start with a Free Preview of 2 new shows, then pick the Show Pass or the Season Pass. For less than a craft box, you get a whole month of pretend play. <a href="pricing/">See planned pricing</a>.</p>
-    <span class="store soon js-store" role="img" aria-label="PretendThat: coming soon to the App Store">
-      <svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12.152 8.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 5.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-      <span><small>Coming soon to the</small><strong>App Store</strong></span>
-    </span>
+    <p class="mx-auto max-w-[50ch] mt-4 mb-9 text-lg">PretendThat is coming soon to the App Store. Start with a Free Preview of 2 new shows, then pick the Show Pass or the Season Pass.</p>
+    <div class="flex flex-wrap items-center justify-center gap-5">
+      <span class="store soon js-store" role="img" aria-label="PretendThat: coming soon to the App Store">
+        <svg viewBox="0 0 24 28" aria-hidden="true"><path d="M12.152 8.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 5.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+        <span><small>Coming soon to the</small><strong>App Store</strong></span>
+      </span>
+      <a class="btn-chunky yellow" href="pricing/">See pricing</a>
+    </div>
   </div>
 </section>
 </main>
 
-<footer class="site-foot">
+<!-- SHARED:FOOTER (generated by scripts/shared.py) -->
+<footer class="site-foot after-closing">
   <div class="wrap">
-    <img src="assets/nutmeg-celebrate-yay.png" width="519" height="700" alt="" loading="lazy">
-    <b>PretendThat</b>
-    <nav class="foot-links" aria-label="Footer">
-      <a href="pricing/">Pricing</a>
-      <a href="support/">Support</a>
-      <a href="privacy/">Privacy</a>
-      <a href="terms/">Terms</a>
-      <a href="mailto:support@pretendthat.app">support@pretendthat.app</a>
-    </nav>
-    <p class="made"><a href="codecamp/">Made at Southern Utah Code Camp 2026 — 1st place</a></p>
+    <div class="foot-grid">
+      <div>
+        <!-- Nutmeg-on-top logo (transparent) on a white badge: the footer is dark purple, and the purple "that" needs a light background. -->
+        <a class="foot-logo" href="./" aria-label="PretendThat home"><img src="assets/art/logo-nutmeg-top-460.webp" srcset="assets/art/logo-nutmeg-top-460.webp 1x, assets/art/logo-nutmeg-top-920.webp 2x" width="460" height="321" alt="PretendThat" loading="lazy"></a>
+        <p class="mt-5 max-w-[34ch]">Pretend-play adventures for kids 4–8, planned by talking and played off the screen.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="pricing/">Pricing</a></li>
+          <li><a href="#faq">Questions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Help</h2>
+        <ul>
+          <li><a href="support/">Support</a></li>
+          <li><a href="support/#contact">Contact us</a></li>
+          <li><a href="mailto:support@pretendthat.app">support@pretendthat.app</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>The fine print</h2>
+        <ul>
+          <li><a href="privacy/">Privacy</a></li>
+          <li><a href="terms/">Terms</a></li>
+          <li><a href="codecamp/">Code Camp 2026</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine">
+      <span>© 2026 PretendThat</span>
+      <a href="codecamp/">Made at Southern Utah Code Camp 2026 — 1st place</a>
+    </div>
   </div>
 </footer>
+<!-- /SHARED:FOOTER -->
 <script src="assets/site.js"></script>
 </body>
 </html>

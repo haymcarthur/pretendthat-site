@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="pretendthat">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,57 +15,38 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
 <style>
-:root{
-  --bg:#FFFBF5; --surface:#FFFFFF; --ink:#2A1A4A; --body:#4A3F5C; --muted:#7A6F8A;
-  --lav:#E3D9F3; --pink:#FFD6D0; --sky:#CDE9F5; --peach:#FFE9CF;
-  --coral:#FF7A66; --yellow:#FFC94D; --shadow:0 10px 30px rgba(42,26,74,.10);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{overflow-x:hidden}
-body{background:var(--bg);color:var(--body);font:400 17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-h1,h2,h3{font-family:Fredoka,"Baloo 2",system-ui,sans-serif;color:var(--ink);line-height:1.1}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px;position:relative}
 .blob{position:absolute;border-radius:50%;filter:blur(2px);z-index:0;pointer-events:none}
-section{position:relative;padding:88px 0;overflow:hidden}
-.eyebrow{display:inline-block;font:600 14px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
 
-/* nav */
-nav{position:relative;z-index:2}
-nav .wrap{display:flex;align-items:center;gap:12px;padding-top:20px;padding-bottom:20px}
-nav img{width:40px;height:40px;border-radius:10px;box-shadow:var(--shadow)}
-nav b{font:700 22px/1 Fredoka,sans-serif;color:var(--ink)}
 
 /* hero */
-.hero{padding:24px 0 72px;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(44px,6.4vw,76px);font-weight:700;margin-bottom:20px}
-.hero h1 em{font-style:normal;color:var(--coral);white-space:nowrap}
-.hero p.lead{font-size:clamp(18px,2vw,21px);max-width:34ch;margin-bottom:28px}
-.pill{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font:600 15px/1 Inter,sans-serif;padding:14px 22px;border-radius:999px;text-decoration:none}
+.cc-hero{padding:24px 0 72px;overflow:hidden}
+.cc-hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.cc-hero h1{font-size:clamp(44px,6.4vw,76px);font-weight:600;margin-bottom:20px}
+.cc-hero h1 em{font-style:normal;color:var(--coral-ink);white-space:nowrap}
+.cc-hero p.lead{font-size:clamp(18px,2vw,21px);max-width:34ch;margin-bottom:28px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font:600 15px/1 Poppins,sans-serif;padding:14px 22px;border-radius:999px;text-decoration:none}
 .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .tag{background:var(--surface);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;color:var(--ink);box-shadow:0 2px 8px rgba(42,26,74,.06)}
-.hero-art{position:relative;display:flex;justify-content:center}
-.hero-art .disc{position:absolute;inset:6% 4% 0;background:var(--lav);border-radius:50%}
-.hero-art img{position:relative;width:min(400px,100%);animation:bob 4s ease-in-out infinite}
+.cc-hero-art{position:relative;display:flex;justify-content:center}
+.cc-hero-art .disc{position:absolute;inset:6% 4% 0;background:var(--lav);border-radius:50%}
+.cc-hero-art img{position:relative;width:min(400px,100%);animation:bob 4s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-10px)}}
-@media (prefers-reduced-motion:reduce){.hero-art img{animation:none}}
+@media (prefers-reduced-motion:reduce){.cc-hero-art img{animation:none}}
 
 /* steps */
-.steps{background:var(--surface)}
-.head{text-align:center;max-width:640px;margin:0 auto 52px}
-.head h2{font-size:clamp(32px,4.4vw,48px);margin-bottom:12px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;position:relative;z-index:1}
-.card{border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:18px}
-.card:nth-child(1){background:var(--lav)} .card:nth-child(2){background:var(--peach)}
-.card:nth-child(3){background:var(--pink)} .card:nth-child(4){background:var(--sky)}
-.card .num{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 20px/1 Fredoka,sans-serif;flex:none}
-.card .top{display:flex;gap:14px;align-items:center}
-.card h3{font-size:30px;font-weight:600}
-.card p{max-width:46ch}
-.card img{border-radius:16px;box-shadow:var(--shadow);margin-top:auto;background:#fff}
+.cc-steps{background:var(--surface)}
+.cc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;position:relative;z-index:1}
+.cc-card{border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:18px}
+.cc-card:nth-child(1){background:var(--lav)} .cc-card:nth-child(2){background:var(--peach)}
+.cc-card:nth-child(3){background:var(--pink)} .cc-card:nth-child(4){background:var(--sky)}
+.cc-card .num{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:600 20px/1 Poppins,sans-serif;flex:none}
+.cc-card .top{display:flex;gap:14px;align-items:center}
+.cc-card h3{font-size:30px;font-weight:600}
+.cc-card p{max-width:46ch}
+.cc-card img{border-radius:16px;box-shadow:var(--shadow);margin-top:auto;background:#fff}
 
 /* printables */
 .prints .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
@@ -83,42 +64,63 @@ nav b{font:700 22px/1 Fredoka,sans-serif;color:var(--ink)}
 .privacy h2 span{color:var(--yellow)}
 
 /* built */
-.built .list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
+.built .cc-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
 .built .item{background:var(--surface);border-radius:22px;padding:24px;box-shadow:0 2px 12px rgba(42,26,74,.06)}
 .built .item h3{font-size:21px;font-weight:600;margin-bottom:6px}
 .built .item p{font-size:15.5px}
 .built .note{text-align:center;color:var(--muted);font-size:15px;margin-top:28px;position:relative;z-index:1}
 
-footer{background:var(--lav);padding:44px 0;text-align:center}
-footer .wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
-footer img{width:90px}
-footer b{font:700 22px/1 Fredoka,sans-serif;color:var(--ink)}
-footer p{font-size:15px}
 
 @media (max-width:860px){
-  section{padding:64px 0}
-  .hero .wrap,.prints .wrap{grid-template-columns:1fr}
-  .hero-art{order:-1} .hero-art img{width:min(280px,80%)}
-  .grid{grid-template-columns:1fr}
-  .built .list{grid-template-columns:1fr 1fr}
+  .cc-section{padding:64px 0}
+  .cc-hero .wrap,.prints .wrap{grid-template-columns:1fr}
+  .cc-hero-art{order:-1} .cc-hero-art img{width:min(280px,80%)}
+  .cc-grid{grid-template-columns:1fr}
+  .built .cc-list{grid-template-columns:1fr 1fr}
   .privacy .box{grid-template-columns:1fr;text-align:center;padding:32px 24px}
   .privacy img{margin:0 auto;width:120px}
 }
 @media (max-width:560px){
   .wrap{padding:0 16px}
-  .built .list{grid-template-columns:1fr}
-  .card{padding:20px}
-  .card h3{font-size:26px}
+  .built .cc-list{grid-template-columns:1fr}
+  .cc-card{padding:20px}
+  .cc-card h3{font-size:26px}
   .blob{display:none}
-  .hero{background:radial-gradient(circle at 105% 0%,var(--pink) 0 150px,transparent 151px),radial-gradient(circle at -10% 100%,var(--sky) 0 110px,transparent 111px)}
+  .cc-hero{background:radial-gradient(circle at 105% 0%,var(--pink) 0 150px,transparent 151px),radial-gradient(circle at -10% 100%,var(--sky) 0 110px,transparent 111px)}
 }
 </style>
 </head>
 <body>
 
-<nav><div class="wrap"><a href="../" style="display:flex;align-items:center;gap:12px;text-decoration:none"><img src="../assets/favicon.png" alt=""><b>PretendThat</b></a><a href="../" style="margin-left:auto;font:600 15px/1 Inter,sans-serif;color:var(--ink)">Home</a></div></nav>
+<!-- SHARED:HEADER (generated by scripts/shared.py) -->
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <!-- LOGO: letters-only placeholder. Swap for the Nutmeg-on-top logo when it is exported. -->
+    <a class="brand" href="../" aria-label="PretendThat home"><img src="../assets/art/logo-pretendthat.svg" width="1484" height="633" alt="PretendThat"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="../#how">How it works</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../support/">Support</a>
+      <a href="../privacy/">Privacy</a>
+    </nav>
+    <a class="btn-chunky small head-cta" href="../#download">Get the app</a>
+    <details class="menu-toggle">
+      <summary aria-label="Open menu">Menu <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></summary>
+      <nav class="menu-panel" aria-label="Main (mobile)">
+        <a href="../#how">How it works</a>
+        <a href="../pricing/">Pricing</a>
+        <a href="../support/">Support</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="../#download">Get the app</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<!-- /SHARED:HEADER -->
+<main id="main">
 
-<header class="hero">
+<section class="cc-hero">
   <div class="blob" style="width:340px;height:340px;background:var(--pink);top:-120px;right:-80px;opacity:.7"></div>
   <div class="blob" style="width:220px;height:220px;background:var(--sky);bottom:-60px;left:-60px;opacity:.8"></div>
   <div class="wrap">
@@ -126,14 +128,14 @@ footer p{font-size:15px}
       <span class="eyebrow">iPad app · kids 4–8</span>
       <h1>The game master for <em>real-world</em> pretend play.</h1>
       <p class="lead">Meet Nutmeg, a voice-first stage-manager mouse. She takes kids from “I’m bored” to a printed kit and a show, then steps back so the play happens off the screen.</p>
-      <a class="pill" href="#how">See how it works ↓</a>
+      <a class="btn-chunky" href="#how">See how it works ↓</a>
       <div class="tags"><span class="tag">Talk, don’t type</span><span class="tag">Household props</span><span class="tag">Custom printables</span><span class="tag">Screen-light play</span></div>
     </div>
     <div class="hero-art"><div class="disc"></div><img src="../assets/nutmeg-wave-happy.png" alt="Nutmeg, a mouse in a stage-manager outfit, waving hello"></div>
   </div>
-</header>
+</section>
 
-<section class="steps" id="how">
+<section class="cc-steps" id="how">
   <div class="blob" style="width:260px;height:260px;background:var(--peach);top:40px;left:-120px;opacity:.6"></div>
   <div class="wrap">
     <div class="head">
@@ -141,23 +143,23 @@ footer p{font-size:15px}
       <h2>Four steps from bored to playing</h2>
       <p>Kids talk with Nutmeg. A grown-up only needs to press Print.</p>
     </div>
-    <div class="grid">
-      <article class="card">
+    <div class="cc-grid">
+      <article class="cc-card">
         <div class="top"><span class="num">1</span><h3>Game</h3></div>
         <p>Pick a game and a theme just by talking. Nutmeg offers a few ideas, asks how many kids are playing, and hands out a role to each one.</p>
         <img src="../assets/conversation.jpg" alt="Nutmeg talking on her stage while kids pick a game" loading="lazy">
       </article>
-      <article class="card">
+      <article class="cc-card">
         <div class="top"><span class="num">2</span><h3>Get Ready</h3></div>
         <p>Go on a prop hunt around the house: pillows, chairs, blankets, boxes. Only soft, safe items, and a missing prop can be swapped or skipped.</p>
         <img src="../assets/prop-hunt.jpg" alt="Prop hunt: Nutmeg points to a tray card with Found it and Don't have it buttons" loading="lazy">
       </article>
-      <article class="card">
+      <article class="cc-card">
         <div class="top"><span class="num">3</span><h3>Print</h3></div>
         <p>An AI-generated custom kit to color and cut: role badges, a sign, play money, tickets, a menu and prop cut-outs. Up to 7 pages, one print for a grown-up.</p>
         <img src="../assets/kit-reveal.jpg" alt="Printable kit pages fanned out beside Nutmeg" loading="lazy">
       </article>
-      <article class="card">
+      <article class="cc-card">
         <div class="top"><span class="num">4</span><h3>Play</h3></div>
         <p>Nutmeg guides the show scene by scene with picture checklists and tablet hand-offs (“Pass the tablet to the Captain!”), then steps back.</p>
         <img src="../assets/checklist.jpg" alt="Scene checklist with picture steps" loading="lazy">
@@ -198,7 +200,7 @@ footer p{font-size:15px}
       <span class="eyebrow">How it’s built</span>
       <h2>Native, voice-first, and tested</h2>
     </div>
-    <div class="list">
+    <div class="cc-list">
       <div class="item"><h3>Swift &amp; SwiftUI</h3><p>A native iPad app (iPadOS 17+) with no third-party runtime dependencies.</p></div>
       <div class="item"><h3>Realtime voice</h3><p>Apple on-device speech recognition turns kids’ words into text; the OpenAI Realtime API answers in Nutmeg’s voice over a WebSocket with AVAudioEngine. Tool calls drive the app’s state machine.</p></div>
       <div class="item"><h3>Claude for the story</h3><p>Anthropic’s Claude writes each kit and the scene-by-scene play guide as structured JSON.</p></div>
@@ -209,14 +211,49 @@ footer p{font-size:15px}
   </div>
 </section>
 
-<footer>
+</main>
+
+<!-- SHARED:FOOTER (generated by scripts/shared.py) -->
+<footer class="site-foot">
   <div class="wrap">
-    <img src="../assets/nutmeg-celebrate-yay.png" alt="Nutmeg celebrating" loading="lazy">
-    <b>PretendThat</b>
-    <p>Made by Haylee McArthur for Southern Utah Code Camp 2026.</p>
-    <p><a href="../" style="color:var(--ink);font-weight:600">Home</a> · <a href="../support/" style="color:var(--ink);font-weight:600">Support</a> · <a href="../privacy/" style="color:var(--ink);font-weight:600">Privacy</a> · <a href="../terms/" style="color:var(--ink);font-weight:600">Terms</a></p>
+    <div class="foot-grid">
+      <div>
+        <!-- Nutmeg-on-top logo (transparent) on a white badge: the footer is dark purple, and the purple "that" needs a light background. -->
+        <a class="foot-logo" href="../" aria-label="PretendThat home"><img src="../assets/art/logo-nutmeg-top-460.webp" srcset="../assets/art/logo-nutmeg-top-460.webp 1x, ../assets/art/logo-nutmeg-top-920.webp 2x" width="460" height="321" alt="PretendThat" loading="lazy"></a>
+        <p class="mt-5 max-w-[34ch]">Pretend-play adventures for kids 4–8, planned by talking and played off the screen.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="../#how">How it works</a></li>
+          <li><a href="../pricing/">Pricing</a></li>
+          <li><a href="../#faq">Questions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Help</h2>
+        <ul>
+          <li><a href="../support/">Support</a></li>
+          <li><a href="../support/#contact">Contact us</a></li>
+          <li><a href="mailto:support@pretendthat.app">support@pretendthat.app</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>The fine print</h2>
+        <ul>
+          <li><a href="../privacy/">Privacy</a></li>
+          <li><a href="../terms/">Terms</a></li>
+          <li><a href="../codecamp/">Code Camp 2026</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine">
+      <span>© 2026 PretendThat</span>
+      <a href="../codecamp/">Made at Southern Utah Code Camp 2026 — 1st place</a>
+    </div>
   </div>
 </footer>
+<!-- /SHARED:FOOTER -->
 
 </body>
 </html>
