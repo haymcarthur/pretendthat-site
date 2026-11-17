@@ -73,13 +73,13 @@
     <p>Nutmeg is instructed never to ask for or repeat personal information, and the app watches for things like phone numbers, emails and addresses and steers away from them.</p>
 
     <h2>How the AI parts work</h2>
-    <p>To create a game, the app sends game details (the kind of game, the theme, roles, props and the kit to draw) to AI services from Anthropic (Claude, for the story and play guide) and OpenAI (for the pictures, safety checks and Nutmeg’s voice). These requests, and the words for Nutmeg’s replies, go through our own relay, a small server that holds our service keys and forwards each request. The relay is stateless: it doesn’t log or store what passes through it. No audio of kids’ voices ever goes through it. It runs on Cloudflare, which handles connection details such as your IP address to deliver requests and to limit how often they can be made; we don’t keep them.</p>
+    <p>To create a game, the app sends game details (the kind of game, the theme, roles, props and the kit to draw) to AI services from Anthropic (Claude, for the story and play guide) and OpenAI (for the pictures, safety checks and Nutmeg’s voice). These requests, and the words for Nutmeg’s replies, go through our own relay, a small server that holds our service keys and forwards each request. The relay doesn’t log or store what passes through it. No audio of kids’ voices ever goes through it. It runs on Cloudflare, which handles connection details such as your IP address to deliver requests and to limit how often they can be made; we don’t keep them.</p>
 
     <h2>Our partners and what each one does</h2>
     <ul>
       <li><strong>OpenAI</strong> creates Nutmeg’s spoken replies and her voice, draws the printable pictures, and runs safety checks on words and pictures. It receives the words your child says (as text, with names removed) and the game details.</li>
       <li><strong>Anthropic</strong> (Claude) writes the game: the story, the printable pages’ words and the play guide. It receives the game details and the words used to plan the game (as text, with names removed).</li>
-      <li><strong>Cloudflare</strong> runs our relay, which forwards these requests. The relay doesn’t store what passes through it.</li>
+      <li><strong>Cloudflare</strong> runs our relay, which forwards these requests. The relay keeps no game content and none of the words. Once show counting is turned on, it keeps only an anonymous monthly count of new shows, filed under a scrambled (hashed) version of the App Store purchase ID.</li>
       <li><strong>TelemetryDeck</strong> receives anonymous usage counts, only if a grown-up turns them on (see below). It never receives anything about your child.</li>
     </ul>
     <p>PretendThat doesn’t keep the words or game details it sends. Our AI partners may keep API requests for up to 30 days, only to detect abuse, and then delete them.</p>
@@ -107,9 +107,6 @@
 
     <h2>Children’s privacy (COPPA)</h2>
     <p>PretendThat is made for kids, and we follow the Children’s Online Privacy Protection Act (COPPA). We don’t ask children for personal information and we don’t knowingly collect it, we remove names from what’s sent to our AI partners, we don’t keep recordings of children’s voices, and we have no ads or ad tracking. The only analytics are optional, anonymous usage counts that a grown-up must turn on, and they never include a child’s personal information. A parent or guardian sets up the app and agrees to the use of our AI partners before a child plays, and a grown-up gate (a press-and-hold plus a number question) protects the Grown-ups corner. Parents can review, delete or stop the use of their child’s information by contacting us or by turning off AI partners in Grown-ups. If you believe your child has sent us personal information, for example through our support form, email us and we’ll delete it.</p>
-
-    <h2>Where PretendThat is available</h2>
-    <p>PretendThat is offered in the United States.</p>
 
     <h2>This website and the support form</h2>
     <p>This website has no ads, analytics or tracking cookies. It is hosted on GitHub Pages and loads fonts from Google Fonts, so those services receive standard connection details (such as your IP address) when you visit.</p>
