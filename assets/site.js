@@ -8,6 +8,7 @@
 const APP_STORE_URL = "";
 
 if (APP_STORE_URL) {
+  document.querySelectorAll(".js-store-link").forEach((a) => { a.href = APP_STORE_URL; });
   document.querySelectorAll(".js-store").forEach((badge) => {
     const link = document.createElement("a");
     link.className = "store";
