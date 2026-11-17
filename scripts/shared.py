@@ -56,7 +56,6 @@ def footer(p):
     <!-- Nutmeg-on-top logo (vector), kept small. -->
     <a class="foot-logo" href="{p or './'}" aria-label="PretendThat home"><img src="{p}assets/art/logo-nutmeg-top.svg" width="1358" height="942" alt="PretendThat" loading="lazy"></a>
     <nav class="foot-links" aria-label="Footer">
-      <a href="{p}#how">How it works</a>
       <a href="{p}pricing/">Pricing</a>
       <a href="{p}support/">Support</a>
       <a href="{p}privacy/">Privacy</a>
@@ -64,7 +63,6 @@ def footer(p):
     </nav>
     <div class="fine">
       <span>© 2026 PretendThat</span>
-      <a href="{p}codecamp/">Made at Southern Utah Code Camp 2026 — 1st place</a>
     </div>
   </div>
 </footer>

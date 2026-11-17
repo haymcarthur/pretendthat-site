@@ -20,3 +20,16 @@ if (APP_STORE_URL) {
   });
   document.querySelectorAll(".store-note").forEach((n) => n.remove());
 }
+
+// Plan cards: Monthly / Yearly toggle (Monthly shows without JS; the toggle appears only when this runs).
+document.querySelectorAll(".plans").forEach((plans) => {
+  const toggle = plans.querySelector(".period-toggle");
+  if (!toggle) return;
+  toggle.hidden = false;
+  toggle.querySelectorAll("button").forEach((b) => {
+    b.addEventListener("click", () => {
+      plans.dataset.period = b.dataset.period;
+      toggle.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    });
+  });
+});
