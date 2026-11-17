@@ -48,3 +48,8 @@ Set `APP_STORE_URL` in `assets/site.js` when the app is live; until then the bad
 
 **Cache busting:** every page links `assets/site.css?v=<hash>`. After rebuilding the CSS, bump the version in all pages
 (the first 8 characters of `shasum assets/site.css`), or visitors may get the old cached stylesheet for up to 10 minutes.
+
+**Image cache busting:** every local image URL (`<img src>`, `srcset`, icon links, and `url()` in `src/site.css`) carries
+`?v=<first 8 characters of the file's SHA-1>`. After adding or changing any image, run `python3 scripts/version_assets.py`
+(`scripts/shared.py` runs it too), then rebuild the CSS if `src/site.css` changed. A changed image gets a new URL, so
+browsers never show the old cached copy.

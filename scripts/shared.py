@@ -89,3 +89,7 @@ for rel, (p, cur) in PAGES.items():
         assert n == 1, rel
     f.write_text(s)
     print("ok", rel)
+
+# Re-apply the image cache versions (the header/footer above are written without them).
+import subprocess, sys
+subprocess.run([sys.executable, str(ROOT / "scripts" / "version_assets.py")], check=True)
