@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PretendThat Privacy Policy</title>
-<meta name="description" content="How PretendThat handles privacy: no accounts, nothing about kids stored, no ads, no tracking.">
+<meta name="description" content="How PretendThat handles privacy: no accounts, nothing about kids stored, no ads or ad tracking.">
 <link rel="icon" type="image/svg+xml" href="../assets/art/app-icon.svg">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -44,7 +44,7 @@
     <div class="sec-head">
       <span class="eyebrow">Privacy</span>
       <h1 id="page-title">Privacy policy</h1>
-      <p class="updated">Last updated: November 16, 2026</p>
+      <p class="updated">Last updated: November 17, 2026</p>
     </div>
   </div>
 </section>
@@ -57,9 +57,10 @@
     <ul>
       <li>No accounts and no sign-in.</li>
       <li>We never ask for or collect kids’ names. Nutmeg calls kids by their roles, like “the Captain” or “the Head Baker”.</li>
-      <li>Kids’ voices are turned into words right on the device and never leave it. Only the words, with names replaced, go to our AI partners so Nutmeg can answer.</li>
-      <li>Saved games keep only the game itself, on your device.</li>
-      <li>No ads, no tracking, no analytics.</li>
+      <li>Kids’ voices are turned into words right on the device and never leave it. Only the words, with names removed, go to our AI partners, OpenAI and Anthropic, so Nutmeg can answer.</li>
+      <li>Nutmeg is an AI helper. A grown-up agrees to the AI partners before kids play and can turn them off any time.</li>
+      <li>Every new game saves itself, and saved games keep only the game itself, on your device.</li>
+      <li>No ads and no ad tracking. Anonymous usage counts are off unless a grown-up turns them on, and they never include anything about your child.</li>
     </ul>
 
     <h2>Accounts</h2>
@@ -68,24 +69,47 @@
     <h2>Kids’ voices and what they say</h2>
     <p><strong>Your child’s voice stays on the device.</strong> Nutmeg only listens while the microphone button is held down. What your child says is turned into words right on the device by Apple’s on-device speech recognition, and the recording is thrown away the moment the button is let go. The sound of your child’s voice is never sent to us, to our AI partners or to anyone else, and it is never saved.</p>
     <p><strong>Only the words go to our AI partners.</strong> To answer, the app sends those words, with names (like “my name is …”) replaced by “[name]”, through our relay to OpenAI, which creates Nutmeg’s reply and her voice, and the game details built from them to Anthropic for the story. The words are checked for kid safety on the device first. PretendThat doesn’t keep a transcript, and the chat on screen disappears when the game ends.</p>
-    <p><strong>Microphone and speech permissions.</strong> iPadOS and iOS ask for both. Apple’s standard speech permission message includes a sentence about speech data being sent to Apple; PretendThat requires on-device recognition, so your child’s voice is not sent. If the device can’t recognize speech on the device, the microphone stays off and you can type instead.</p>
+    <p><strong>Microphone and speech permissions.</strong> iPadOS and iOS ask for both. Apple’s standard speech permission message includes a sentence about speech data being sent to Apple; PretendThat requires on-device recognition, so your child’s voice is not sent. If the device can’t recognize speech on its own, the microphone stays off and you can type instead.</p>
     <p>Nutmeg is instructed never to ask for or repeat personal information, and the app watches for things like phone numbers, emails and addresses and steers away from them.</p>
 
     <h2>How the AI parts work</h2>
     <p>To create a game, the app sends game details (the kind of game, the theme, roles, props and the kit to draw) to AI services from Anthropic (Claude, for the story and play guide) and OpenAI (for the pictures, safety checks and Nutmeg’s voice). These requests, and the words for Nutmeg’s replies, go through our own relay, a small server that holds our service keys and forwards each request. The relay is stateless: it doesn’t log or store what passes through it. No audio of kids’ voices ever goes through it. It runs on Cloudflare, which handles connection details such as your IP address to deliver requests and to limit how often they can be made; we don’t keep them.</p>
 
+    <h2>Our partners and what each one does</h2>
+    <ul>
+      <li><strong>OpenAI</strong> creates Nutmeg’s spoken replies and her voice, draws the printable pictures, and runs safety checks on words and pictures. It receives the words your child says (as text, with names removed) and the game details.</li>
+      <li><strong>Anthropic</strong> (Claude) writes the game: the story, the printable pages’ words and the play guide. It receives the game details and the words used to plan the game (as text, with names removed).</li>
+      <li><strong>Cloudflare</strong> runs our relay, which forwards these requests. The relay doesn’t store what passes through it.</li>
+      <li><strong>TelemetryDeck</strong> receives anonymous usage counts, only if a grown-up turns them on (see below). It never receives anything about your child.</li>
+    </ul>
+    <p>PretendThat doesn’t keep the words or game details it sends. Our AI partners may keep API requests for up to 30 days, only to detect abuse, and then delete them.</p>
+
+    <h2>Nutmeg is AI, and how to report a problem</h2>
+    <p>Nutmeg is a computer character, not a person. Her words, the story and the printed pages are made by AI and checked for kid safety, but AI can still get things wrong. Nutmeg tells kids she’s “a pretend helper made by a computer” the first time they play. If something seems wrong or not OK, open <strong>Grown-ups → Report a problem</strong>, pick the game and the part, and your mail app opens with that part’s text filled in. The report includes only what you choose to send: the game’s title, that part’s AI-made text and the app version, nothing about your child.</p>
+
     <h2>Saved games</h2>
-    <p>If you tap the star to save a game, the app stores the game content on your device: its title, roles, props, kit pictures, play guide, a cover picture and Nutmeg’s own recorded lines (her voice only). It never stores kids’ names, kids’ voices, what anyone said, a chat transcript or how many kids played.</p>
+    <p>Every new game saves itself on your device once its printable kit is made; there’s no save button. A saved game holds the game content only: its title, roles, props, kit pictures, play guide, a cover picture and Nutmeg’s own recorded lines (her voice only). It never stores kids’ names, kids’ voices, what anyone said, a chat transcript or how many kids played.</p>
     <p>Saved games stay on your device. We plan to add syncing through iCloud later; if we do, saved games will sync through your family’s own private iCloud account, not to us. You can delete saved games any time in the app’s Grown-ups corner, and deleting the app removes them.</p>
 
-    <h2>No ads, tracking or analytics</h2>
-    <p>The app has no ads, no advertising or tracking tools, and no analytics. We don’t sell or share information for advertising.</p>
+    <h2>No ads or ad tracking; optional anonymous usage counts</h2>
+    <p>The app has no ads and no advertising or tracking tools, and we don’t sell or share information for advertising.</p>
+    <p><strong>Anonymous usage counts (off unless a grown-up turns them on).</strong> In the privacy step when the app is first set up, or later in <strong>Grown-ups → About what we save</strong>, a grown-up can turn on “Share anonymous usage counts”. When it’s on, the app sends simple counts to <strong>TelemetryDeck</strong>, an analytics service, so we can see where families get stuck and what to improve. Each count is a fixed event from a short list (for example “a game reached Print”, “scene 2 started” or “a plan was bought”) with only coarse, fixed details: the step or scene, the number of players as a range, a general game type (like “food” or “travel”, never the game’s title), a time range, and the plan name. It never includes names, voices, anything your child says or types, the game’s story or pages, or any other text. The app tags the counts with a random number made for this install (not a device identifier); TelemetryDeck scrambles it again before storing it, and it’s deleted from the device when you turn the switch off. TelemetryDeck also receives general device details such as the device model, system version, app version, language and region. We use the counts only to improve PretendThat, never for advertising, and they aren’t linked to you. You can turn it off any time; nothing more is sent from then on.</p>
+    <p>The App Store also gives us Apple’s own anonymous App Analytics (for example installs and crashes) for people who choose to share them with app developers in their device settings.</p>
 
     <h2>Purchases</h2>
     <p>Any purchases or subscriptions are handled by Apple through the App Store. We don’t receive your payment details. For billing help or refunds, use <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>.</p>
 
-    <h2>Kids’ privacy</h2>
-    <p>PretendThat is made for kids, and we designed it with children’s privacy laws such as COPPA in mind: we don’t ask kids for personal information and we don’t knowingly collect it. A grown-up gate (a press-and-hold plus a number question) protects the Grown-ups corner. If you believe your child has sent us personal information, for example through our support form, email us and we’ll delete it.</p>
+    <h2>Settings stored on the device</h2>
+    <p>A few settings stay on the device until you delete the app: for example that the intro was seen, your answer about the AI partners, your usage-counts answer, and how many new shows have been used. None of them is about your child.</p>
+
+    <h2>Your choices: turning AI off and taking back consent</h2>
+    <p>When PretendThat is first set up, a grown-up is asked whether Nutmeg may use our AI partners. PretendThat needs them to work, so without a yes it can’t start new games. You can take back that consent any time: open <strong>Grown-ups</strong>, choose <strong>AI partners</strong> and turn it off. Nothing more is sent from then on. Deleting the app removes everything stored on the device. To ask us to delete anything you sent us (for example a support email), email us at the address below.</p>
+
+    <h2>Children’s privacy (COPPA)</h2>
+    <p>PretendThat is made for kids, and we follow the Children’s Online Privacy Protection Act (COPPA). We don’t ask children for personal information and we don’t knowingly collect it, we remove names from what’s sent to our AI partners, we don’t keep recordings of children’s voices, and we have no ads or ad tracking. The only analytics are optional, anonymous usage counts that a grown-up must turn on, and they never include a child’s personal information. A parent or guardian sets up the app and agrees to the use of our AI partners before a child plays, and a grown-up gate (a press-and-hold plus a number question) protects the Grown-ups corner. Parents can review, delete or stop the use of their child’s information by contacting us or by turning off AI partners in Grown-ups. If you believe your child has sent us personal information, for example through our support form, email us and we’ll delete it.</p>
+
+    <h2>Where PretendThat is available</h2>
+    <p>PretendThat is offered in the United States.</p>
 
     <h2>This website and the support form</h2>
     <p>This website has no ads, analytics or tracking cookies. It is hosted on GitHub Pages and loads fonts from Google Fonts, so those services receive standard connection details (such as your IP address) when you visit.</p>
@@ -95,7 +119,7 @@
     <p>If we change how PretendThat handles information, we’ll update this page and the date at the top.</p>
 
     <h2>Contact</h2>
-    <p>Questions about privacy? Email <a href="mailto:support@pretendthat.app">support@pretendthat.app</a> or use the <a href="../support/#contact">contact form</a>.</p>
+    <p>Questions about privacy, including kids’ privacy? Email <a href="mailto:support@pretendthat.app">support@pretendthat.app</a> or use the <a href="../support/#contact">contact form</a>.</p>
   </div>
 </section>
 </main>

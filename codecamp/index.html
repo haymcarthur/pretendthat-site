@@ -67,7 +67,7 @@
       <h2 id="how-title">Four steps from bored to playing</h2>
       <p class="lead">Kids talk with Nutmeg. A grown-up only needs to press Print.</p>
     </div>
-    <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><li><div class="step-card"><span class="n">1</span><h3>Game</h3><p>Pick a game and a theme just by talking. Nutmeg offers a few ideas, asks how many kids are playing, and hands out a role to each one.</p></div></li><li><div class="step-card"><span class="n">2</span><h3>Get Ready</h3><p>Go on a prop hunt around the house: pillows, chairs, blankets, boxes. Only soft, safe items, and a missing prop can be swapped or skipped.</p></div></li><li><div class="step-card"><span class="n">3</span><h3>Print</h3><p>An AI-generated custom kit to color and cut: role badges, a sign, play money, tickets, a menu and prop cut-outs. Up to 7 pages, one print for a grown-up.</p></div></li><li><div class="step-card"><span class="n">4</span><h3>Play</h3><p>Nutmeg guides the show scene by scene with picture checklists and tablet hand-offs (“Pass the tablet to the Captain!”), then steps back.</p></div></li></ol>
+    <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><li><div class="step-card"><span class="n">1</span><h3>Pick</h3><p>Pick a game and a theme just by talking. Nutmeg offers a few ideas, asks how many kids are playing, and hands out a role to each one.</p></div></li><li><div class="step-card"><span class="n">2</span><h3>Props</h3><p>Go on a prop hunt around the house: pillows, chairs, blankets, boxes. Only soft, safe items, and a missing prop can be swapped or skipped.</p></div></li><li><div class="step-card"><span class="n">3</span><h3>Print</h3><p>An AI-generated custom kit to color and cut: role badges, a sign, play money, tickets, a menu and prop cut-outs. One print for a grown-up.</p></div></li><li><div class="step-card"><span class="n">4</span><h3>Play</h3><p>Nutmeg tells a short story, then guides the setup, three play scenes and the clean-up with picture checklists and “pass the iPad to the Captain!” hand-offs. Then she steps back.</p></div></li></ol>
   </div>
 </section>
 
@@ -96,7 +96,7 @@
         <span class="eyebrow">Privacy</span>
         <h2 id="priv-title" class="text-[clamp(28px,3.4vw,40px)]">We never ask for kids’ names. Nothing is stored.</h2>
       </div>
-      <p class="muted">No accounts, no backend, no recordings, no transcripts. Nutmeg only asks how many kids are playing. Kids’ voices are turned into words on the device and never sent; only the words, with names replaced, go to the AI.</p>
+      <p class="muted">No accounts, no database of users, no recordings, no transcripts. Nutmeg only asks how many kids are playing. Kids’ voices are turned into words on the device and never sent; only the words, with names replaced, go to the AI.</p>
     </div>
   </div>
 </section>
@@ -107,7 +107,7 @@
       <span class="eyebrow">How it’s built</span>
       <h2 id="built-title">Native, voice-first, and tested</h2>
     </div>
-    <div class="grid gap-5 md:grid-cols-3"><article class="feature"><h3>Swift &amp; SwiftUI</h3><p>A native app for iPad and iPhone (iPadOS and iOS 17+) with no third-party runtime dependencies.</p></article><article class="feature"><h3>Realtime voice</h3><p>Apple on-device speech recognition turns kids’ words into text; the OpenAI Realtime API answers in Nutmeg’s voice over a WebSocket with AVAudioEngine. Tool calls drive the app’s state machine.</p></article><article class="feature"><h3>Claude for the story</h3><p>Anthropic’s Claude writes each kit and the scene-by-scene play guide as structured JSON.</p></article><article class="feature"><h3>AI printables</h3><p>OpenAI image generation draws every kit page and the sticker art for ideas, roles and props.</p></article><article class="feature"><h3>Living character art</h3><p>Layered vector Nutmeg animated in SwiftUI, with a mouth that follows the voice’s volume.</p></article><article class="feature"><h3>NutmegCore</h3><p>A Swift package holding the app’s logic, covered by about 200 unit tests.</p></article></div>
+    <div class="grid gap-5 md:grid-cols-3"><article class="feature"><h3>Swift &amp; SwiftUI</h3><p>A native app for iPad and iPhone (iPadOS and iOS 17+).</p></article><article class="feature"><h3>Realtime voice</h3><p>Apple on-device speech recognition turns kids’ words into text; the OpenAI Realtime API answers in Nutmeg’s voice over a WebSocket with AVAudioEngine. Tool calls drive the app’s state machine.</p></article><article class="feature"><h3>Claude for the story</h3><p>Anthropic’s Claude writes each kit and the scene-by-scene play guide as structured JSON.</p></article><article class="feature"><h3>AI printables</h3><p>OpenAI image generation draws every kit page and the sticker art for ideas, roles and props.</p></article><article class="feature"><h3>Living character art</h3><p>Layered vector Nutmeg animated in SwiftUI, with a mouth that follows the voice’s volume.</p></article><article class="feature"><h3>NutmegCore</h3><p>A Swift package holding the app’s logic, covered by more than 500 unit tests.</p></article></div>
   </div>
 </section>
 </main>
