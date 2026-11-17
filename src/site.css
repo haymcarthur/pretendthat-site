@@ -289,7 +289,10 @@
   .period-toggle button { border: 0; background: transparent; border-radius: 999px; padding: 8px 18px; font: inherit; font-size: 15px; font-weight: 500; color: var(--color-gray); cursor: pointer; }
   .period-toggle button[aria-pressed="true"] { background: var(--color-purple); color: #fff; }
   .plans[data-period="monthly"] .when-yearly, .plans[data-period="yearly"] .when-monthly { display: none; }
-  .flag { display: inline-block; align-self: flex-start; background: #F1ECF7; color: var(--color-purple); font-weight: 600; font-size: 12px; border-radius: 999px; padding: 4px 10px; }
+  .plan-mini { position: relative; }
+  /* "Our pick" straddles the card's top border, so it takes no room inside and the cards line up. */
+  .flag { position: absolute; top: 0; left: 24px; transform: translateY(-50%); background: var(--color-purple); color: #fff; font-weight: 600; font-size: 12px; line-height: 1; border-radius: 999px; padding: 6px 12px; }
+  .plans-note { margin: 22px auto 0; max-width: 78ch; text-align: center; font-size: 14.5px; line-height: 1.6; color: var(--color-gray); }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   /* FAQ: daisyUI collapse on <details>, as plain rows */
