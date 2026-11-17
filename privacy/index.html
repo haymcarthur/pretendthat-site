@@ -45,7 +45,7 @@
     <ul>
       <li>No accounts and no sign-in.</li>
       <li>We never ask for or collect kids’ names. Nutmeg calls kids by their roles, like “the Captain” or “the Head Baker”.</li>
-      <li>Kids’ speech is used live so Nutmeg can talk with them. We don’t record, store or log it.</li>
+      <li>Kids’ voices are turned into words right on the iPad and never leave it. Only the words, with names replaced, go to our AI partners so Nutmeg can answer.</li>
       <li>Saved games keep only the game itself, on your iPad.</li>
       <li>No ads, no tracking, no analytics.</li>
     </ul>
@@ -54,11 +54,13 @@
     <p>PretendThat has no accounts, sign-in or profiles. We don’t have a database of users.</p>
 
     <h2>Kids’ voices and what they say</h2>
-    <p>When kids talk to Nutmeg, their voice is streamed live to OpenAI’s realtime voice service so Nutmeg can understand and answer. That audio and its text are used only for the conversation in the moment. PretendThat does not record, save or log kids’ voices or what they say, and we never see it. OpenAI processes it under its API terms. If the live voice connection isn’t available, the app can use Apple’s speech recognition as a backup, which Apple handles under its own privacy terms.</p>
+    <p><strong>Your child’s voice stays on the iPad.</strong> Nutmeg only listens while the microphone button is held down. What your child says is turned into words right on the iPad by Apple’s on-device speech recognition, and the recording is thrown away the moment the button is let go. The sound of your child’s voice is never sent to us, to our AI partners or to anyone else, and it is never saved.</p>
+    <p><strong>Only the words go to our AI partners.</strong> To answer, the app sends those words, with names (like “my name is …”) replaced by “[name]”, through our relay to OpenAI, which creates Nutmeg’s reply and her voice, and the game details built from them to Anthropic for the story. The words are checked for kid safety on the iPad first. PretendThat doesn’t keep a transcript, and the chat on screen disappears when the game ends.</p>
+    <p><strong>Microphone and speech permissions.</strong> iPadOS asks for both. Apple’s standard speech permission message includes a sentence about speech data being sent to Apple; PretendThat requires on-device recognition, so your child’s voice is not sent. If the iPad can’t recognize speech on the device, the microphone stays off and you can type instead.</p>
     <p>Nutmeg is instructed never to ask for or repeat personal information, and the app watches for things like phone numbers, emails and addresses and steers away from them.</p>
 
     <h2>How the AI parts work</h2>
-    <p>To create a game, the app sends game details (the kind of game, the theme, roles, props and the kit to draw) to AI services from Anthropic (Claude, for the story and play guide) and OpenAI (for the pictures, safety checks and Nutmeg’s voice). These requests go through our own relay, a small server that holds our service keys and forwards each request. The relay is stateless: it doesn’t log or store what passes through it. It runs on Cloudflare, which handles connection details such as your IP address to deliver requests and to limit how often they can be made; we don’t keep them.</p>
+    <p>To create a game, the app sends game details (the kind of game, the theme, roles, props and the kit to draw) to AI services from Anthropic (Claude, for the story and play guide) and OpenAI (for the pictures, safety checks and Nutmeg’s voice). These requests, and the words for Nutmeg’s replies, go through our own relay, a small server that holds our service keys and forwards each request. The relay is stateless: it doesn’t log or store what passes through it. No audio of kids’ voices ever goes through it. It runs on Cloudflare, which handles connection details such as your IP address to deliver requests and to limit how often they can be made; we don’t keep them.</p>
 
     <h2>Saved games</h2>
     <p>If you tap the star to save a game, the app stores the game content on your iPad: its title, roles, props, kit pictures, play guide, a cover picture and Nutmeg’s own recorded lines (her voice only). It never stores kids’ names, kids’ voices, what anyone said, a chat transcript or how many kids played.</p>
