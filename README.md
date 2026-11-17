@@ -45,3 +45,6 @@ Set `APP_STORE_URL` in `assets/site.js` when the app is live; until then the bad
 - Tailwind CSS 4.3.3 (`tailwindcss`, `@tailwindcss/cli`), MIT, build-time only
 - daisyUI 5.7.50, MIT, build-time only
 - Poppins (Google Fonts), SIL Open Font License 1.1
+
+**Cache busting:** every page links `assets/site.css?v=<hash>`. After rebuilding the CSS, bump the version in all pages
+(the first 8 characters of `shasum assets/site.css`), or visitors may get the old cached stylesheet for up to 10 minutes.
