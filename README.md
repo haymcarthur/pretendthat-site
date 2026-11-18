@@ -34,12 +34,14 @@ python3 -m http.server 8743   # then open http://localhost:8743/
   landscape, iPhone 18 Pro Black portrait), exported at 1x/2x (iPad) and 1x/2x/3x (iPhone), WebP q90, served with
   `srcset`/`sizes`. Apple's raw bezel PNGs are not in this repo (license: download them from Apple).
 - `assets/kit/`: printable art from a real saved game (Vet Clinic for Sea Animals), used by the Code Camp page.
-- `assets/shots/`: real app screenshots (PretendThat `design/appstore-screens/raw-v3`), unchanged, WebP: iPad at 640/1280,
+- `assets/shots/`: real app screenshots (PretendThat `design/appstore-screens/raw-v3`; the Pick step's `*-talk-*` from `raw-v4`
+  `02-talk-sparkle`), unchanged, WebP: iPad at 640/1280,
   iPhone at 300/600/900. The home page draws the device frames in CSS (like the App Store slides) and swaps iPad for
   iPhone below 760px with `<picture>`.
 - `assets/print/`: the black-and-white printables of a real game (Pet Hotel) for the home page's Print fan, 260/520.
-- `assets/chips/`, `assets/art/hero-nutmeg-*.webp`: the floating chip picture and the hero Nutmeg (480/960).
-- The home page follows the App Store slides' "Cheat Day" style: white sections, ink Poppins 800 headlines with one
+- `assets/chips/`: the floating chip picture. The hero is `assets/art/hero-nutmeg-wave.svg` (Haylee's art: Nutmeg waving on her
+  round stage with props, vector, unedited; the same art is App Store slide 1).
+- Every page (except codecamp/) follows the App Store slides' "Cheat Day" style: white sections, ink Poppins 800 headlines with one
   coral word (`<em>`), light-gray sublines, soft panels that crop the devices, 1-2 floating chips, alternating sides.
 
 ## App Store link
