@@ -496,7 +496,7 @@
   .page-head .lead { max-width: 40ch; }
   .page-head .sec-head { max-width: 860px; }
   .page-head .sec-head.center .lead { margin-inline: auto; }
-  .page-head .updated { display: inline-block; margin-top: 4px; background: var(--color-tint); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 500; color: var(--color-gray); }
+  .page-head .updated { display: inline-block; margin-top: 4px; background: #fff; border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 500; color: var(--color-gray); }
   .sec-head .eyebrow { font-size: 15px; }
 
   /* plan cards: rounded white cards with soft shadows; "Our pick" gets the slides' coral outline */
@@ -539,4 +539,145 @@
   .prose ul > li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 8px; height: 8px; border-radius: 50%; background: var(--color-coral-strong); }
   .prose strong { color: var(--color-head); }
   .page-head + .sec { padding-top: clamp(32px, 4vw, 56px); }
+}
+
+/* ================================================================
+   v3 restyle (2026-11-18), matching the chosen App Store slides v3 ("Rays" style,
+   PretendThat/design/appstore-screens/slides-v3/src/gen.mjs): warm cream / white sections, a small coral outlined
+   label chip above each headline, semibold ink headlines with one coral word, soft stage arches behind the devices
+   (sky → sand → cream with a faint coral rim), real UI pieces cut from the same screenshots floating off the device
+   edges with soft shadows, short gray captions.
+   ================================================================ */
+@theme {
+  --color-head: #2A1B47;              /* slides' INK */
+  --color-sub: #6F6483;               /* slides' gray caption, a touch darker for 4.5:1 on cream */
+  --color-cream-bg: #FFF7EC;          /* slides' CREAM */
+  --color-sky-bg: #D3ECF6;            /* slides' SKY */
+}
+@layer components {
+  body { color: #3A3150; }
+  h1, h2 { font-weight: 600; letter-spacing: -0.02em; line-height: 1.13; }
+  h1 em, h2 em { color: var(--color-coral-strong); }
+  h3 { font-weight: 600; letter-spacing: -0.01em; }
+
+  /* ---------- the label chip (slides: coral outline, dot with a soft ring) ---------- */
+  .step-label, .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px; width: max-content; max-width: 100%;
+    min-height: 34px; padding: 4px 16px 4px 13px; margin-bottom: 18px; border: 1.5px solid var(--color-coral-strong);
+    border-radius: 999px; background: rgba(255, 255, 255, .72); font-weight: 600; font-size: 14.5px; line-height: 1.2;
+    letter-spacing: .005em; color: var(--color-coral-shade);
+  }
+  .step-label::before, .eyebrow::before {
+    content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--color-coral-strong);
+    box-shadow: 0 0 0 3px rgba(238, 82, 66, .18);
+  }
+  .sec-head.center .step-label, .sec-head.center .eyebrow { margin-inline: auto; }
+  .sec-head .step-label, .sec-head .eyebrow, .copy .step-label { display: flex; }
+  .lead { color: var(--color-sub); font-weight: 500; }
+
+  /* ---------- warm sections ---------- */
+  .cream { background: var(--color-cream-bg); --sec-bg: #FFF7EC; }
+  main > section { --sec-bg: #FFFFFF; }
+  main > section.cream { --sec-bg: #FFF7EC; }
+
+  /* ---------- hero (slide 1): logo, tagline, image 49 on a sky arch with a warm glow ---------- */
+  .hero-v3 { background: linear-gradient(180deg, #FFF7EC 0%, #FFF3E3 55%, #FCE6CF 100%); overflow: hidden; }
+  .hero-v3 .landing { grid-template-columns: 0.95fr 1.05fr; padding-block: clamp(36px, 5vw, 72px) 0; align-items: end; }
+  .hero-v3 .hero-copy { align-self: center; padding-bottom: clamp(24px, 4vw, 64px); }
+  .hero-logo { display: block; width: clamp(180px, 20vw, 250px); height: auto; margin-bottom: clamp(18px, 2.4vw, 30px); }
+  .hero-v3 .hero-copy h1 { font-size: clamp(44px, 5.6vw, 74px); line-height: 1.08; margin-bottom: 20px; }
+  .hero-v3 .hero-art { order: 0; position: relative; width: 100%; max-width: 680px; padding-top: 0; container-type: inline-size; }
+  .hero-v3 .hero-art::before { content: ""; position: absolute; left: 6%; right: 6%; top: 6%; bottom: -40%; border-radius: 999px 999px 0 0;
+    background: linear-gradient(180deg, #D3ECF6 0%, #E3F1F5 45%, #FBE7D2 80%, rgba(252, 230, 207, 0) 100%); z-index: 0; }
+  .hero-v3 .hero-art::after { content: ""; position: absolute; left: -30%; right: -30%; top: -10%; bottom: -10%;
+    background: radial-gradient(ellipse at 50% 55%, rgba(255, 226, 140, .5), rgba(255, 226, 140, 0) 60%); z-index: 0; pointer-events: none; }
+  .hero-v3 .hero-art > img { position: relative; z-index: 1; width: 112%; margin-left: -6%; max-width: none; }
+  @media (max-width: 900px) {
+    .hero-v3 .landing { grid-template-columns: minmax(0, 1fr); text-align: center; }
+    .hero-logo { margin-inline: auto; }
+    .hero-v3 .hero-copy { padding-bottom: 0; }
+    .hero-v3 .hero-art { margin-inline: auto; width: min(100%, 560px); }
+  }
+
+  /* ---------- feature rows: chip + headline + short copy beside a device on a stage arch ---------- */
+  .feat h2 { font-size: clamp(36px, 4.2vw, 54px); }
+  .visual { container-type: inline-size; }
+  .stage {
+    position: relative; overflow: visible; border-radius: 0; background: none; aspect-ratio: 1 / .9; isolation: isolate;
+  }
+  /* the arch: sky window fading through sand into the section's own color, a faint coral rim around it */
+  .stage::before, .stage::after { content: ""; position: absolute; z-index: -1; border-radius: 999px 999px 0 0; }
+  .stage::before { inset: -2.2cqw -2.2cqw 0; background: radial-gradient(ellipse at 50% 0%, rgba(238, 82, 66, .11), rgba(238, 82, 66, .04) 70%, rgba(238, 82, 66, 0));
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 92%); mask-image: linear-gradient(180deg, #000 55%, transparent 92%); }
+  .stage::after { inset: 0; background: linear-gradient(180deg, #D3ECF6 0%, #E4F2F6 46%, #FBE9D5 76%, var(--sec-bg, #fff) 100%); }
+  .stage.art { aspect-ratio: auto; padding: 14% 7% 8%; }
+  .stage.fan-stage { aspect-ratio: 1 / .86; }
+  /* straight device frame like the slides' (#18171D, soft shadow), whole device on the arch */
+  .dev { --w: 84cqw; top: 16cqw; box-shadow: 0 2.6cqw 7.8cqw rgba(42, 27, 71, .16); }
+  .stage.crop-top-m .dev { top: 16cqw; bottom: auto; }
+  .cap-v3 { margin-top: 18px; text-align: center; font-weight: 500; font-size: 15.5px; color: var(--color-sub); }
+
+  /* floating pieces: real UI, enlarged, soft shadows (slides' .float / .panel / .bub) */
+  .float { position: absolute; z-index: 3; filter: drop-shadow(0 1.8cqw 2.8cqw rgba(42, 27, 71, .20)) drop-shadow(0 4px 8px rgba(42, 27, 71, .08)); }
+  .float img { display: block; width: 100%; height: auto; }
+  .panel-v3 { position: absolute; z-index: 3; background: #fff; box-shadow: 0 1.8cqw 5.4cqw rgba(42, 27, 71, .20), 0 4px 10px rgba(42, 27, 71, .08); }
+  .panel-v3 img { display: block; width: 100%; height: auto; }
+  .visual .bubble { position: absolute; z-index: 3; font-size: max(13px, 2.9cqw); box-shadow: 0 1.8cqw 5.4cqw rgba(42, 27, 71, .18), 0 4px 10px rgba(42, 27, 71, .08); border-radius: 1.1em; }
+  .visual .bubble.nut { display: flex; align-items: center; gap: .7em; padding-left: .5em; }
+  .visual .bubble.nut img { width: 2.3em; height: 2.3em; border-radius: 50%; flex: none; }
+
+  /* Pick: the kid's line top right; Nutmeg's reply off the left edge, over the iPad's bottom bar */
+  .visual .bubble.kid.talk { right: -2cqw; left: auto; top: 25cqw; bottom: auto; }
+  .visual .bubble.nut.talk { left: 2cqw; right: auto; top: 69.5cqw; bottom: auto; width: auto; white-space: nowrap; padding-right: 1.6em; }
+  /* Play: the real scene card, enlarged, off the right edge */
+  .visual .panel-v3.scene { right: -3cqw; top: 17cqw; width: 50cqw; padding: 2.4cqw 2.2cqw 2cqw; border-radius: 3.6cqw; }
+  /* Saved: the real "Play with Nutmeg" bar and printables row from the saved game page */
+  .stage.saved-stage { aspect-ratio: 1 / 1.06; }
+  .visual .float.playbar { right: -4cqw; top: 39.5cqw; width: 78cqw; }
+  .visual .float.playbar img { border-radius: 999px; }
+  .visual .float.printables { left: 2cqw; top: 52cqw; width: 70cqw; background: #fff; border-radius: 3.6cqw; padding: 2.6cqw 2.4cqw 1.6cqw; }
+  /* Print keeps the approved black-and-white stack; the chip gets the slides' soft shadow */
+  .visual .chip.print { right: -2cqw; top: 6cqw; }
+  .chip.tick-card { border-width: 2px; }
+
+  @media (max-width: 760px) {
+    .stage { aspect-ratio: 1 / 1.62; }
+    .stage.fan-stage { aspect-ratio: 1 / 1.05; }
+    .stage.art { aspect-ratio: auto; padding: 22% 4% 8%; }
+    .dev, .stage.crop-top-m .dev { --w: 64cqw; top: 13cqw; bottom: auto; }
+    .visual .bubble { font-size: max(13px, 4.1cqw); }
+    .visual .bubble.kid.talk { right: 0; top: 34cqw; }
+    .visual .bubble.nut.talk { left: 0; top: 104cqw; white-space: normal; width: 74cqw; padding-right: 1em; }
+    .visual .panel-v3.scene { right: 2cqw; left: 2cqw; top: 66cqw; width: auto; padding: 3.6cqw 3.4cqw 3cqw; border-radius: 6cqw; }
+    .stage.saved-stage { aspect-ratio: 1 / 1.62; }
+    .visual .float.playbar { right: 0; top: 62cqw; width: 92cqw; }
+    .visual .float.printables { left: 4cqw; top: 85cqw; width: 92cqw; border-radius: 5cqw; padding: 3.6cqw 3.4cqw 2.4cqw; }
+    .visual .chip.print { right: 2cqw; top: 3cqw; }
+  }
+
+  /* ---------- the rest of the home page ---------- */
+  .step-list .n { font-weight: 600; }
+  .step-list a { box-shadow: 0 18px 44px rgba(42, 27, 71, .08), 0 1px 3px rgba(42, 27, 71, .05); }
+  .step-list h3 { font-weight: 600; }
+  .cream .step-list a, .cream .plan-mini, .cream .faq-item { background: #fff; }
+  .why h3 { font-weight: 600; }
+  .safe { background: #fff; box-shadow: 0 18px 44px rgba(42, 27, 71, .07), 0 1px 3px rgba(42, 27, 71, .05); }
+  .closing-card { position: relative; overflow: hidden; isolation: isolate; background: var(--color-cream-bg); }
+  .closing-card::before { content: ""; position: absolute; z-index: -1; left: 50%; transform: translateX(-50%); top: 14%; width: min(820px, 92%); aspect-ratio: 1;
+    border-radius: 999px 999px 0 0; background: linear-gradient(180deg, #D3ECF6 0%, #E4F2F6 40%, #FBE9D5 70%, #FFF7EC 92%); box-shadow: 0 0 0 18px rgba(238, 82, 66, .05); }
+  .closing-card h2 { font-weight: 600; }
+
+  /* ---------- inner pages: cream page head with a faint arch, chips, semibold headlines ---------- */
+  .page-head, .sec.tint.page-head { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, #FFF7EC 0%, #FFF7EC 70%, #fff 100%); padding-bottom: clamp(36px, 5vw, 64px); }
+  .page-head::before { content: ""; position: absolute; z-index: -1; right: max(-120px, calc(50% - 760px)); top: 40px; bottom: 0; width: 520px; border-radius: 260px 260px 0 0;
+    background: linear-gradient(180deg, #D3ECF6 0%, #E4F2F6 40%, #FBE9D5 75%, rgba(255, 247, 236, 0) 100%); box-shadow: 0 0 0 16px rgba(238, 82, 66, .045); opacity: .9;
+    -webkit-mask-image: linear-gradient(180deg, #000 45%, transparent 100%); mask-image: linear-gradient(180deg, #000 45%, transparent 100%); }
+  .page-head:has(.sec-head.center)::before { right: auto; left: 50%; transform: translateX(-50%); width: min(980px, 110%); border-radius: 490px 490px 0 0; top: 26px; opacity: .75; }
+  .page-head h1 { font-weight: 600; font-size: clamp(42px, 5.6vw, 72px); }
+  .page-head + .sec { padding-top: clamp(40px, 5vw, 64px); }
+  @media (max-width: 860px) { .page-head:not(:has(.sec-head.center))::before { right: -260px; opacity: .55; } }
+  .plan-mini .price { font-weight: 600; letter-spacing: -.025em; }
+  .plan-mini .plan-name { font-weight: 600; }
+  .prose h2 { font-weight: 600; letter-spacing: -.02em; }
+  .site-foot { background: #fff; }
 }

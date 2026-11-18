@@ -41,8 +41,14 @@ python3 -m http.server 8743   # then open http://localhost:8743/
 - `assets/print/`: the black-and-white printables of a real game (Pet Hotel) for the home page's Print fan, 260/520.
 - `assets/chips/`: the floating chip picture. The hero is `assets/art/hero-nutmeg-wave.svg` (Haylee's art: Nutmeg waving on her
   round stage with props, vector, unedited; the same art is App Store slide 1).
-- Every page (except codecamp/) follows the App Store slides' "Cheat Day" style: white sections, ink Poppins 800 headlines with one
-  coral word (`<em>`), light-gray sublines, soft panels that crop the devices, 1-2 floating chips, alternating sides.
+- `assets/pieces/`: real UI pieces cut (crop only) from the App Store slides v3 sources, as the slides float them: Nutmeg's round
+  avatar (raw-v3 `02b-chat-with-nutmeg`), the "Play with Nutmeg" bar and the printables row (raw-v3 `07-saved-game-page`), and the
+  Pets Check In scene card (`cards-v3`). WebP. The iPhone Pick screen (`assets/shots/iphone-talk-*`) is the red-mic retake
+  (raw-v4 `02-talk-sparkle-redmic`).
+- Every page (except codecamp/) follows the App Store slides v3 ("Rays" style, `PretendThat/design/appstore-screens/slides-v3`):
+  warm cream and white sections, a small coral outlined label chip above each headline (`.step-label` / `.eyebrow`), semibold ink
+  headlines with one coral word (`<em>`), soft stage arches behind the devices (sky to sand to cream, faint coral rim), the
+  real UI pieces above floating off the device edges with soft shadows, short gray captions.
 
 ## App Store link
 
