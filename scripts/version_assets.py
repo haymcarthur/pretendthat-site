@@ -1,7 +1,7 @@
 """Adds ?v=<hash> to every local image URL so a changed image always loads fresh.
 
 Run from the repo root after changing any image:  python3 scripts/version_assets.py
-It rewrites, in every page: <img src>, <img srcset> entries and <link rel="icon"/"apple-touch-icon"> hrefs; and in
+It rewrites, in every page: <img src>, <img>/<source> srcset entries and <link rel="icon"/"apple-touch-icon"> hrefs; and in
 src/site.css: url(...) for local images (then rebuild the CSS). The version is the first 8 hex characters of the
 file's SHA-1, so it only changes when the file's content changes. Absolute URLs (https://...) are left alone.
 """
@@ -39,7 +39,7 @@ for rel in PAGES:
     base = f.parent
     s = f.read_text()
     new = re.sub(r'(<img\b[^>]*?\bsrc=")([^"]+)(")', lambda m: m.group(1) + versioned(m.group(2), base) + m.group(3), s)
-    new = re.sub(r'(<img\b[^>]*?\bsrcset=")([^"]+)(")', lambda m: m.group(1) + fix_srcset(m.group(2), base) + m.group(3), new)
+    new = re.sub(r'(<(?:img|source)\b[^>]*?\bsrcset=")([^"]+)(")', lambda m: m.group(1) + fix_srcset(m.group(2), base) + m.group(3), new)
     new = re.sub(r'(<link\b[^>]*?\brel="(?:icon|apple-touch-icon)"[^>]*?\bhref=")([^"]+)(")', lambda m: m.group(1) + versioned(m.group(2), base) + m.group(3), new)
     if new != s:
         f.write_text(new); changed += 1
