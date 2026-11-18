@@ -189,16 +189,21 @@
   }
 
   /* Step 2: prop cards around the pointing illustration (same container-unit sizing as the hero tags) */
-  .props-art { position: relative; margin: 0 auto; width: 100%; max-width: 520px; container-type: inline-size; }
-  .props-art > img { display: block; width: 100%; height: auto; }
-  .prop-card { position: absolute; z-index: 2; display: flex; align-items: center; gap: .65em; background: #fff; border-radius: 1.2em; padding: .65em .8em; box-shadow: 0 .9em 2.2em rgba(42, 24, 70, .12), 0 1px 3px rgba(42, 24, 70, .06); font-size: clamp(10px, 2.9cqw, 15px); line-height: 1.2; }
-  .prop-card img { width: 3.2em; height: 2.6em; object-fit: contain; }
+  /* Prop hunt graphic (2026-11-17): a 1300x1010 composition scaled with the figure (container units). */
+  .props-art { position: relative; margin: 0 auto; width: 100%; max-width: 600px; aspect-ratio: 1300 / 1010; container-type: inline-size; }
+  .props-nutmeg { position: absolute; left: 5.38%; top: 14.85%; width: 43.08%; height: auto; }
+  .props-shadow { position: absolute; left: 9.23%; top: 90.3%; width: 32.3%; height: 4.55%; border-radius: 50%; background: radial-gradient(closest-side, rgba(63, 26, 96, .14), rgba(63, 26, 96, 0)); }
+  .prop-card { position: absolute; z-index: 2; display: flex; align-items: center; gap: .73em; background: #fff; border-radius: 1.13em; padding: .73em .87em; white-space: nowrap; width: 18em; box-sizing: border-box; box-shadow: 0 .87em 2em rgba(42, 24, 70, .12), 0 1px 3px rgba(42, 24, 70, .06); font-size: max(9px, 2.31cqw); line-height: 1.2; }
+  .prop-card.now { outline: max(1.5px, .31cqw) solid var(--color-coral-strong); }
+  .prop-card img { width: 3.2em; height: 2.6em; object-fit: contain; flex: none; }
+  .prop-card > span:not([class]) { flex: 1; }
   .prop-card b { display: block; color: var(--color-head); font-weight: 600; }
   .prop-card small { display: block; color: var(--color-gray); font-size: .87em; }
-  .prop-card .ok, .prop-card .pend, .prop-card .no { width: 2em; height: 2em; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .prop-card .ok, .prop-card .pend, .prop-card .no { width: 1.93em; height: 1.93em; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .prop-card .ok svg, .prop-card .pend svg { width: 1em; height: 1em; }
   .prop-card .ok { background: var(--color-lime-shade); }
   .prop-card .pend { background: #fff; border: 1.5px solid #CDE6B5; }
-  .prop-card .no { background: #fff; border: 1.5px solid #F2C4BE; color: var(--color-coral-shade); font-weight: 700; font-size: .85em; }
+  .prop-card .no { background: #fff; border: 1.5px solid #F2C4BE; color: var(--color-coral-shade); font-weight: 600; font-size: .87em; width: 2.2em; height: 2.2em; }
   .prop-card svg { width: 1em; height: 1em; }
 
   /* ---------- device frames (Apple product bezels, composited). iPad behind, iPhone in front of its lower right. ---------- */
