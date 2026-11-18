@@ -62,7 +62,7 @@ def footer(p):
       <a href="{p}terms/">Terms</a>
     </nav>
     <div class="fine">
-      <span>© 2026 PretendThat</span>
+      <span>© 2026 Crimson Foundry LLC</span>
     </div>
   </div>
 </footer>
