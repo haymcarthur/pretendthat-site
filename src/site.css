@@ -582,7 +582,7 @@
 
   /* ---------- hero (slide 1): tagline beside image 49 on a sky arch with a warm glow; art on the left (desktop), below the copy on phones ---------- */
   .hero-v3 { background: linear-gradient(180deg, #FFF7EC 0%, #FFF3E3 55%, #FCE6CF 100%); overflow: hidden; }
-  .hero-v3 .landing { grid-template-columns: 1.05fr 0.95fr; padding-block: clamp(36px, 5vw, 72px) 0; align-items: end; }
+  .hero-v3 .landing { grid-template-columns: 1.05fr 0.95fr; padding-block: clamp(56px, 8vw, 112px) clamp(32px, 4.5vw, 64px); align-items: end; }
   .hero-v3 .hero-copy { align-self: center; padding-bottom: clamp(24px, 4vw, 64px); }
   .hero-v3 .hero-copy h1 { font-size: clamp(44px, 5.6vw, 74px); line-height: 1.08; margin-bottom: 20px; }
   .hero-v3 .hero-art { order: -1; position: relative; width: 100%; max-width: 680px; padding-top: 0; container-type: inline-size; }
@@ -593,6 +593,7 @@
   .hero-v3 .hero-art > img { position: relative; z-index: 1; width: 112%; margin-left: -6%; max-width: none; }
   @media (max-width: 900px) {
     .hero-v3 .landing { grid-template-columns: minmax(0, 1fr); text-align: center; }
+    .hero-v3 .landing { padding-block: clamp(56px, 14vw, 88px) clamp(32px, 9vw, 56px); }
     .hero-v3 .hero-copy { padding-bottom: 0; }
     .hero-v3 .hero-art { order: 0; margin-inline: auto; width: min(100%, 560px); }
   }
@@ -639,7 +640,9 @@
   .visual .panel-v3.scene { right: -3cqw; top: 17cqw; width: 50cqw; padding: 2.4cqw 2.2cqw 2cqw; border-radius: 3.6cqw; }
   /* Saved: the real "Play with Nutmeg" bar and printables row from the saved game page */
   .stage.saved-stage { aspect-ratio: 1 / 1.06; }
-  .visual .float.playbar { right: -4cqw; top: 39.5cqw; width: 78cqw; }
+  /* iPad (84cqw device, screen 81.5cqw from 9.24cqw/17.24cqw): the real button is centered at 50cqw, 42.6cqw and 41.2cqw wide */
+  .visual .float.playbar { left: 50%; right: auto; transform: translateX(-50%); top: 38.35cqw; width: 58cqw; }
+  .visual .float.playbar img, .visual .float.playbar picture { display: block; width: 100%; height: auto; }
   .visual .float.playbar img { border-radius: 999px; }
   .visual .float.printables { left: 2cqw; top: 52cqw; width: 70cqw; background: #fff; border-radius: 3.6cqw; padding: 2.6cqw 2.4cqw 1.6cqw; }
   /* Print keeps the approved black-and-white stack; the chip gets the slides' soft shadow */
@@ -656,7 +659,8 @@
     .visual .bubble.nut.talk { left: 0; top: 104cqw; white-space: normal; width: 74cqw; padding-right: 1em; }
     .visual .panel-v3.scene { right: 2cqw; left: 2cqw; top: 66cqw; width: auto; padding: 3.6cqw 3.4cqw 3cqw; border-radius: 6cqw; }
     .stage.saved-stage { aspect-ratio: 1 / 1.62; }
-    .visual .float.playbar { right: 0; top: 62cqw; width: 92cqw; }
+    /* iPhone (64cqw device): the real button is centered at 50cqw, 71cqw and 55cqw wide */
+    .visual .float.playbar { left: 50%; right: auto; top: 62.2cqw; width: 78cqw; }
     .visual .float.printables { left: 4cqw; top: 85cqw; width: 92cqw; border-radius: 5cqw; padding: 3.6cqw 3.4cqw 2.4cqw; }
     .visual .chip.print { right: 2cqw; top: 3cqw; }
   }
@@ -670,6 +674,7 @@
   .why.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
   @media (max-width: 860px) { .why.two { grid-template-columns: minmax(0, 1fr); } }
   .safe { background: #fff; box-shadow: 0 18px 44px rgba(42, 27, 71, .07), 0 1px 3px rgba(42, 27, 71, .05); }
+  @media (min-width: 861px) { .safe { align-items: center; } }
   .closing-card { position: relative; overflow: hidden; isolation: isolate; background: var(--color-cream-bg); }
   .closing-card h2 { font-weight: 600; }
   main > section:has(> .wrap > #download) { padding-top: clamp(40px, 5vw, 72px); }

@@ -42,7 +42,7 @@ python3 -m http.server 8743   # then open http://localhost:8743/
 - `assets/chips/`: the floating chip picture. The hero is `assets/art/hero-nutmeg-wave.svg` (Haylee's art: Nutmeg waving on her
   round stage with props, vector, unedited; the same art is App Store slide 1).
 - `assets/pieces/`: real UI pieces cut (crop only) from the App Store slides v3 sources, as the slides float them: Nutmeg's round
-  avatar (raw-v3 `02b-chat-with-nutmeg`), the "Play with Nutmeg" bar and the printables row (raw-v3 `07-saved-game-page`), and the
+  avatar (raw-v3 `02b-chat-with-nutmeg`), the "Play with Nutmeg" bar (iPhone `play-bar-*`, iPad `play-bar-ipad-*`) and the printables row (raw-v3 `07-saved-game-page`), and the
   Pets Check In scene card (`cards-v3`). WebP. The iPhone Pick screen (`assets/shots/iphone-talk-*`) is the red-mic retake
   (raw-v4 `02-talk-sparkle-redmic`).
 - Every page (except codecamp/) follows the App Store slides v3 ("Rays" style, `PretendThat/design/appstore-screens/slides-v3`):
